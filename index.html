@@ -1,91 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>About opds-ja</title>
+    <style>
+      body {
+        width: 50em;
+        margin: 0 auto;
+        padding: 2em;
+        font-family: Georgia, sans-serif;
+        font-size: 95%;
+        line-height: 1.6;
+      }
+      header {
+        width: 40em;
+        margin: auto;
+        padding-bottom: 0.8em;
+      }
+      p {
+         margin-top: 0;
+      }
+      a, a:visited {
+         color: #004B91;
+         text-decoration: none;
+      }
+      a:hover {
+         text-decoration: underline;
+      }
+      section {
+         padding-bottom: 0.9em;
+      }
+      h1.title {
+          margin: 0 0 0.6em 0;
+          font-size: 3em;
+          text-align: center;
+          line-height: 1;
+      }
+      h1.subsub {
+          margin: 0.8em 0 0 0;
+          font-size: 1.25em;
+          line-height: 1.6;
+      }
+      h2.original-title {
+          margin: 0 0 0 0;
+          border-bottom: 1px solid black;
+          font-size: 0.88em;
+          font-family:Georgia,serif;
+          font-weight: normal;
+          line-height: 1.6;
+          color: gray;
+      }
+      footer {
+          margin-top: 0.5em;
+          margin-bottom: 4em;
+          border: 1px solid #B6B09E;
+          border-left-width: 0;
+          border-right-width: 0;
+          padding: 0.75em;
+          font-size: 0.75em;
+          background: #FFFFEA;
+          text-align: center;
+      }
+      footer dt {
+          font-weight: bold;
+      }
+      footer dt, footer dd {
+          margin: 0;
+          padding: 0;
+      }
 
-  <title>lostandfound/opds-ja @ GitHub</title>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #bdc6c3;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #42393c; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #42393c; }
-    h3 { text-align: center; color: #42393c; }
-    a { color: #42393c; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">opds-ja</h1>
+      <p>本サイトでは、Open Publication Distribution System (OPDS) に関連する技術資料を、日本語に翻訳して公開しています。</p>
 
-<body>
-  <a href="https://github.com/lostandfound/opds-ja"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="https://github.com/lostandfound/opds-ja/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/lostandfound/opds-ja/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="https://github.com/lostandfound/opds-ja">opds-ja</a>
-      <span class="small">by <a href="https://github.com/lostandfound">lostandfound</a></span></h1>
-
-    <div class="description">
-      a Japanese translation of OPDS spec and documentation.
-    </div>
-
+    </header>
     
-      <p>a Japanese translation of OPDS spec and documentation.
-</p>
+    <section>
+      <h1 class="sub">ドキュメンテーション</h1>
+      
+      <section>
+        <hgroup>
+          <h1 class="subsub">OPDS入門</h1>
+          <h2 class="original-title">OPDS Primer</h2>
+        </hgroup>
+        <p>by Hadrien Gardeur &amp; Benoît Larroque</p>
+      </section>
+      
+      <section>
+        <hgroup>
+          <h1 class="subsub">取得リンクを理解しよう</h1>
+          <h2 class="original-title">Understanding Acquisition Links</h2>
+        </hgroup>
+        <p>by Hadrien Gardeur</p>
+      </section>
+      
+      <section>
+        <hgroup>
+          <h1 class="subsub">よりよいOPDSカタログルートのデザイン</h1>
+          <h2 class="original-title">Creating a better OPDS Catalog Root</h2>
+        </hgroup>
+        <p>by Hadrien Gardeur</p>
+      </section>
+      
+      <section>
+        <hgroup>
+          <h1 class="subsub">ファセット化検索と閲覧</h1>
+          <h2 class="original-title">Faceted Search &amp; Browsing</h2>
+        </hgroup>
+        <p>by Hadrien Gardeur</p>
+      </section>
+      
+    </section>
     
+    <footer>
+       <dl>
+         <dt>owner</dt>
+         <dd>高瀬　拓史（Hiroshi Takase） a.k.a. ろす</dd>
+         <dt>twitter</dt>
+         <dd><a href="http://twitter.com/lost_and_found">@lost_and_found</a></dd>
+         <dt>mail</dt>
+         <dd>itshustletime[あっと]gmail.com</dd>
+         <dt>blog</dt>
+         <dd><a href="http://d.hatena.ne.jp/lost_and_found/">http://d.hatena.ne.jp/lost_and_found/</a></dd>
+         <dd><a href="http://densho.hatenablog.com/">http://densho.hatenablog.com/</a></dd>
+       </dl>
+    </footer>
 
-    
 
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Hiroshi Takase (itshustletime@gmail.com)<br/>      </p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Hiroshi Takase (itshustletime@gmail.com)<br/>      </p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/lostandfound/opds-ja/zipball/master">zip</a> or
-      <a href="https://github.com/lostandfound/opds-ja/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/lostandfound/opds-ja</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/lostandfound/opds-ja">lostandfound/opds-ja</a>
-    </div>
-
-  </div>
-
-</body>
+  </body>
 </html>
