@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>OPDS 入門 (OPDS Primer)</title>
+        <link rel="stylesheet" href="../css/default.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.togglable.0.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('a.togglable').togglable({
+                    showAllLabel: '原文全非表示',
+                    hideAllLabel: '原文全非表示',
+                    showLabel: '原文表示',
+                    hideLabel: '原文非表示',
+                    onShow: function () {
+                    console.log(this);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h1>OPDS 入門</h1>
+                <h2 lang="en">OPDS Primer</h2>
+            </hgroup>
+            
+            <div class="translators_note" lang="ja">
+                <b>注意事項</b>
+                <ul>
+                    <li>この文書は、OPDSのドキュメンテーションの一つ <a href="http://www.feedbooks.com/api/primer">http://www.feedbooks.com/api/primer</a> を @lost_and_found が個人的な関心のために翻訳したものです。</li>
+                    <li>この翻訳は公式なものではありません。翻訳上の誤りが含まれている可能性があります。</li>
+                </ul>
+                
+                <dl class="translation_info">
+                    <dt>原文:</dt>
+                    <dd><a href="http://www.feedbooks.com/api/primer">OPDS Primer</a></dd>
+                    <dt>公開日:</dt>
+                    <dd>2012-2-24</dd>
+                    <dt>最終更新日:</dt>
+                    <dd>2012-2-24</dd>
+                    <dt>原文投稿日:</dt>
+                    <dd>2011-6-14</dd>
+                    <dt>原著者:</dt>
+                    <dd><a href="http://opds-spec.org/author/hadrien/">Hadrien Gardeur</a> &amp; Benoît Larroque</dd>
+                    <dt>翻訳者:</dt>
+                    <dd>ろす(@lost_and_found)</dd>
+                </dl>
+            </div>
+        </header>
+        
+        <p class="toggleLabel"><a href="#" rel="showall" class="togglable">原文全表示</a></p>
+            
+            <section>
+                <hgroup id="Status">
+                    <h1>この文書のステータス</h1>
+                    <h2 lang="en">Status of this document</h2>
+                </hgroup>
+                
+                <p>これは <a href="http://opds-spec.org/specs/opds-catalog-1-0-20100830/">
+                    Open Publishing Distribution System Catalog 1.0
+                    specification</a> の入門書だ。この文書は規範よりも参考に近い。もし万が一この文書と OPDS カタログの仕様が一致しない場合は、仕様のほうを参照して欲しい。</p>
+                
+                <div id="en_p1" style="display:none;">
+                    <p class="original-text" lang="en">This is an introduction to
+                        the <a href="http://opds-spec.org/specs/opds-catalog-1-0-20100830/">
+                            Open Publishing Distribution System Catalog 1.0
+                            specification</a>. This document is informative rather than normative. When this document disagrees,
+                        if ever, with the OPDS Catalog specification, please refer to the
+                        spec.</p>
+                </div>
+                
+                <p class="toggleLabel"><a href="#en_p1" class="togglable">原文表示</a></p>
+            </section>
+            
+            <section>
+                <hgroup id="Catalogs">
+                    <h1>OPDS カタログとは何か</h1>
+                    <h2 lang="en">What are OPDS Catalogs?</h2>
+                </hgroup>
+                
+                <p>OPDS カタログは、本やジャーナルやその他のデジタルコンテンツを、あらゆるユーザが、あらゆる場所から、あらゆる電子化されたフォーマットで、あらゆるデバイスに、集約、配信、発見できるようにする。</p>
+                
+                <div id="en_p2" style="display:none;">
+                    <p class="original-text" lang="en">OPDS Catalogs enable the aggregation, distribution, and discovery of books, journals, and
+                        other digital content by any user, from any source, in any
+                        electronic format, on any device. The OPDS Catalogs specification
+                        is based on the Atom syndication format and prioritizes
+                        simplicity and speed.</p>
+                </div>
+                
+                <p class="toggleLabel"><a href="#en_p2" class="togglable">原文表示</a></p>
+                
+                <p>OPDS カタログの仕様は開発が続けられており、<a href="http://groups.google.com/group/openpub">われわれ専門グループ</a>はどんなアイデア、提案、フィードバックも歓迎する。</p>    
+                
+                <div id="en_p3" style="display:none;">
+                    <p class="original-text" lang="en">The OPDS Catalog specification is continually in development, so any ideas, suggestions, or
+                        feedback are welcomed on <a href="http://groups.google.com/group/openpub">our dedicated group</a>.</p>
+                </div>
+                
+                <p class="toggleLabel"><a href="#en_p3" class="togglable">原文表示</a></p>
+            </section>
+            
+            <section>
+                <hgroup id="Feeds_and_Entries">
+                    <h1>フィードとエントリ</h1>
+                    <h2 lang="en">Feeds &amp; Entries</h2>
+                </hgroup>            
+                
+                <p>OPDS カタログは Atom 配信フォーマット (<a href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rfc.section.1">Atom 仕様</a>) が定義するフィードとエントリの概念を取り入れている。</p>
+                
+                <div id="en_p4" style="display:none;">
+                    <p class="original-text" lang="en">OPDS catalogs borrow the concept of feeds and entries defined in the Atom syndication format
+                        (<a href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rfc.section.1">Atom Spec</a>) :</p>
+                </div>
+                
+                <p class="toggleLabel"><a href="#en_p4" class="togglable">原文表示</a></p>
+                
+                <blockquote class="curlyquote" cite="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rfc.section.1">
+                    <p>Atom は “フィード”と呼ばれる関連情報をリストとして記述した XML ベースの文書フォーマットである。フィードは拡張可能なメタデータの集合を持った“エントリ”と呼ばれる幾つものアイテムで構成される。例えばそれぞれのエントリにはタイトルがある。</p>
+                    <div id="en_p5" style="display:none;">
+                        <p class="original-text" lang="en">Atom is an XML-based
+                            document format that describes lists of related information known
+                            as "feeds". Feeds are composed of a number of items, known
+                            as "entries", each with an extensible set of attached metadata.
+                            For example, each entry has a title.</p>
+                    </div>
+                </blockquote>
+                
+                <p class="toggleLabel"><a href="#en_p5" class="togglable">原文表示</a></p>     
+                
+                <p>フィードは基本的にはエントリのコンテナであり、Atom を読み込んでみれば中には、フィードか単独のエントリのいずれかがあるはずだ。</p>
+                
+                <div id="en_p6" style="display:none;">
+                    <p class="original-text" lang="en">A feed is essentially a container
+                        for entries and when consuming Atom you can either encounter a
+                        feed or a single entry.</p>
+                </div>
+                
+                <p class="toggleLabel"><a href="#en_p6" class="togglable">原文表示</a></p>
+            </section>
+            
+            <section>
+                <hgroup>
+                    <h1>ナビゲーションフィードと取得フィード</h1>
+                    <h2 lang="en">Navigation Feeds and Acquisition Feeds</h2>
+                </hgroup>
+                
+                <p>OPDS カタログには、用途の異なる二種類のフィードがある。</p>
+                
+                <div id="en_p7" style="display:none;">
+                    <p class="original-text" lang="en">In an OPDS catalog, we define two
+                        different uses for feeds:</p>
+                </div>
+                
+                <p class="toggleLabel"><a href="#en_p7" class="togglable">原文表示</a></p>
+                
+                <ol>
+                    <li>
+                        <p>カタログによってクライアントをナビゲートする<em>ナビゲーションフィード</em></p>
+                        <div id="en_p8" style="display:none;">
+                            <p class="original-text" lang="en"><em>Navigation feeds</em>, used by a client to navigate through the catalog</p>
+                        </div>
+                        <p class="toggleLabel"><a href="#en_p8" class="togglable">原文表示</a></p>
+                    </li>
+                    
+                    <li>
+                        <p>出版物を一覧化して取得可能にする<em>取得フィード</em></p>
+                        <div id="en_p9" style="display:none;">
+                            <p class="original-text" lang="en"><em>Acquisition feeds</em>, where publications are listed and can be acquired</p>
+                        </div>
+                        <p class="toggleLabel"><a href="#en_p9" class="togglable">原文表示</a></p>
+                    </li>
+                </ol>
+                
+                <p>いずれのフィードも妥当な Atom フィードであり、一般的な Atom クライアントによって読み込める。</p>
+                <div id="en_p10" style="display:none;">
+                    <p class="original-text" lang="en">Both feeds are valid Atom feeds and can be consumed by a generic Atom client.</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p10" class="togglable">原文表示</a></p>
+                
+
+                
+                <p>カタログ制作者は<em>ナビゲーションフィード</em>と<em>取得フィード</em>を別々にすることが期待される。つまり両者は併存できない。</p>
+                
+                <div id="en_p11" style="display:none;">
+                    <p class="original-text" lang="en">Catalog producers are expected to separate <em>navigation feeds</em>
+                        from <em>acquisition feeds</em>: a feed can't be both at the same
+                        time.</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p11" class="togglable">原文表示</a></p>
+            </section>
+        
+        <section>
+            <hgroup>
+                <h1>カタログリンクとパブリケーション</h1>
+                <h2 lang="en">Catalog Links and Publications</h2>
+            </hgroup>
+            
+            <p>同様に OPDS のエントリには次の二種類がある。</p>
+            
+            <div id="en_p12" style="display:none;">
+                <p class="original-text" lang="en">In a similar fashion, entries in
+                    OPDS can either be:</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p12" class="togglable">原文表示</a></p>
+            
+            <ol>
+                <li>
+                    <p>ナビゲーションフィードの中で、他のフィードを示す<em>カタログリンク</em></p>
+                    <div id="en_p13" style="display:none;">
+                        <p class="original-text" lang="en"><em>Catalog links</em>, pointing to another feed and used in Navigation feeds</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p13" class="togglable">原文表示</a></p>
+                </li>
+                <li>
+                    <p>取得フィードの中で、様々なメタデータをリストし、取得リンクを提供する <em>パブリケーション</em></p>
+                    <div id="en_p14" style="display:none;">
+                        <p class="original-text" lang="en"><em>Publications</em>, listing various metadata and providing an acquisition link in an Acquisition feed</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p14" class="togglable">原文表示</a></p>
+                </li>
+            </ol>
+            
+            <p><em>取得リンク</em>があるものは<em>パブリケーション</em>と判別される。取得リンクがないエントリは<em>カタログリンク</em>だ。</p>
+            
+            <div id="en_p15" style="display:none;">
+                <p class="original-text" lang="en"><em>Publications</em> are identified by the presence of an <em>acquisition link</em>.
+                    The lack of such link indicates that an entry is a <em>catalog link</em>.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p15" class="togglable">原文表示</a></p>
+        </section>
+        
+        <section>
+            <hgroup id="Acquisition_Links">
+                <h1>取得リンク</h1>
+                <h2 lang="en">Acquisition Links</h2>
+            </hgroup>
+            
+            <p>取得リンクは、取得できるリソースへのリンクだ。</p>
+            
+            <div id="en_p16" style="display:none;">
+                <p class="original-text" lang="en">An Acquisition link is a link to a resource that you can acquire.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p16" class="togglable">原文表示</a></p>
+            
+            <p>Atom の中での取得リンクは、基本的に &#8220;<tt>http://opds-spec.org/acquisition</tt>&#8221; によって始まるリレーションを（<tt>rel</tt> 属性に）持った <tt>link</tt> タグとなる。</p>
+            
+            <div id="en_p17" style="display:none;">
+            <p class="original-text" lang="en">In Atom, it's basically a <tt>link</tt> tag using a relationship (a <tt>rel</tt> attribute) starting with &#8220;<tt>http://opds-spec.org/acquisition</tt>&#8221;.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p17" class="togglable">原文表示</a></p>
+            
+            <p>OPDS は予め定義された様々な取得シナリオあらわすリレーションを持つ。</p>
+            
+            <div id="en_p18" style="display:none;">
+                <p class="original-text" lang="en">OPDS provides predefined relationships for various acquisition scenarios:</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p18" class="togglable">原文表示</a></p>
+           
+            
+            <ul>
+                <li>
+                    <p>どんなクライアントでも自由に利用できるリソースへのオープンアクセス</p>
+                    <div id="en_p19" style="display:none;">
+                        <p class="original-text" lang="en">Open Access for resources that are freely available without any constraint,</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p19" class="togglable">原文表示</a></p>
+                </li>
+                
+                <li>
+                    <p>独自のトランザクションを必要とするリソースの販売では、価格はそのリンクの中で示される</p>
+                    <div id="en_p20" style="display:none;">
+                        <p class="original-text" lang="en">Sale for resources that require a transaction to own them, pricing is
+                            indicated in the link,</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p20" class="togglable">原文表示</a></p>
+                </li>
+                
+                <li>
+                    <p>一定の期間だけ借りることのできる、リソースの貸し出し</p>
+                    <div id="en_p21" style="display:none;">
+                        <p class="original-text" lang="en">Lending for resources that can only be borrowed for a limited amount of time,</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p21" class="togglable">原文表示</a></p>
+                </li>
+                
+                <li>
+                    <p>定期的に発行されるリソースの購読</p>
+                    <div id="en_p22" style="display:none;">
+                        <p class="original-text" lang="en">Subscription for resources that are periodically published,</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p22" class="togglable">原文表示</a></p>
+                </li>
+                
+                <li>
+                    <p>（本の最初の章のような）出版物の一部を表示したリソースのサンプル</p>
+                    <div id="en_p23" style="display:none;">
+                        <p class="original-text" lang="en">Sampling for resources that represents a fragment of the publication (ex : the first chapter of a book).</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p23" class="togglable">原文表示</a></p>
+                </li>
+            </ul>
+            
+            <p>これらの取得シナリオが適さない場合には、汎用的な取得リレーションを利用することもできる。</p>
+            
+            <div id="en_p24" style="display:none;">
+                <p class="original-text" lang="en">A Generic Acquisition relation is also available when the acquisition doesn't fit in any of the acquisition scenarios.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p24" class="togglable">原文表示</a></p>
+            
+            <p>関連する  <tt>rel</tt> 属性の値：</p>
+            
+            <div id="en_p25" style="display:none;">
+                <p class="original-text" lang="en">The associated <tt>rel</tt> values are:</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p25" class="togglable">原文表示</a></p>
+            
+            <table summary="The associated rel values for acquisition scenarios" cellpadding="0" cellspacing="0" border="1">
+                <thead>
+                    <tr>
+                        <th>取得シナリオ</th>
+                        
+                        <th>属性の値</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>汎用的な取得</td>
+                        
+                        <td><tt>http://opds-spec.org/acquisition</tt></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>オープンアクセス</td>
+                        
+                        <td><tt>http://opds-spec.org/acquisition/open-access</tt></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>販売</td>
+                        
+                        <td><tt>http://opds-spec.org/acquisition/buy</tt></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>貸し出し</td>
+                        
+                        <td><tt>http://opds-spec.org/acquisition/borrow</tt></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>購読</td>
+                        
+                        <td><tt>http://opds-spec.org/acquisition/subscribe</tt></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>サンプル</td>
+                        
+                        <td><tt>http://opds-spec.org/acquisition/sample</tt></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div id="en_p26"  lang="en" style="display:none;">
+                <table summary="The associated rel values for acquisition scenarios" cellpadding="0" cellspacing="0" border="1">
+                    <thead>
+                        <tr>
+                            <th>Acquisition Scenario</th>
+                            
+                            <th><tt>rel</tt> attribute value</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>Generic Acquisition</td>
+                            
+                            <td><tt>http://opds-spec.org/acquisition</tt></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Open Access</td>
+                            
+                            <td><tt>http://opds-spec.org/acquisition/open-access</tt></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Sale</td>
+                            
+                            <td><tt>http://opds-spec.org/acquisition/buy</tt></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lending</td>
+                            
+                            <td><tt>http://opds-spec.org/acquisition/borrow</tt></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Subscription</td>
+                            
+                            <td><tt>http://opds-spec.org/acquisition/subscribe</tt></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Sampling</td>
+                            
+                            <td><tt>http://opds-spec.org/acquisition/sample</tt></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="toggleLabel"><a href="#en_p26" class="togglable">原文表示</a></p>
+        </section>
+        
+        <section>
+            <hgroup id="Full_Entries">
+                <h1>フルエントリ</h1>
+                <h2 lang="en">Full Entries</h2>
+            </hgroup>
+            
+            <p>カタログ制作者には出版物のエントリに詳細なメタデータを入れることが推奨される。帯域と速度の問題を避けるために、OPDS では <a href="http://datatracker.ietf.org/doc/rfc5023/">AtomPub</a> で最初に導入された仕組みであるフルエントリを推奨する。</p>
+            
+            <div id="en_p27"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Catalog producers are encouraged to provide extensive metadata and links in their publications&#8217; entries. To avoid bandwidth and speed issues, OPDS recommends a feature first introduced in <a href="http://datatracker.ietf.org/doc/rfc5023/">AtomPub</a>: full entries.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p27" class="togglable">原文表示</a></p>
+            
+            <p>あらゆる出版物は <tt>rel="alternate"</tt> と <tt>type="application/atom+xml;type=entry"</tt> の属性を追加した<tt>link</tt> タグを追加することで、エントリの内容を再定義した別の文書を示すことができる。</p>
+  
+            <div id="en_p28"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Any publication can point to a separate document, where the entry is redefined with additional elements using a <tt>link</tt> tag with the following attributes: <tt>rel="alternate"</tt> and <tt>type="application/atom+xml;type=entry"</tt>.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p28" class="togglable">原文表示</a></p>
+            
+            <pre style="margin:0;margin-top:-1.0em"><code>
+  &lt;entry>
+    &lt;title>On the Origin of Species&lt;/title>
+    &lt;id>http://www.example.com/42&lt;/id>
+    &lt;author>
+      &lt;name>Charles Darwin&lt;/name>
+    &lt;/author>
+    &lt;updated>2010-01-02T15:27:07Z&lt;/updated>
+    &lt;link type="application/epub+zip"
+             href="http://www.example.com/42.epub" rel="http://opds-spec.org/acquisition/open-access"/>
+    &lt;link type="application/atom+xml;type=entry" 
+             href="http://www.example.com/42.atom" rel="alternate" title="Full entry"/>
+  &lt;/entry></code></pre>
+           
+            <p><em>エントリの部分的な例</em></p>
+            
+            <div id="en_p29"  lang="en" style="display:none;">
+                <p class="original-text" lang="en"><em>Partial entry example.</em></p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p29" class="togglable">原文表示</a></p>
+            
+            <p>フルエントリの最も一般的な利用ケースは、出版物について詳細な説明を行う場合だ。この部分的なエントリでは <tt>summary</tt> 要素の中で短い説明を行なう一方、フルエントリでは <tt>content</tt> 要素の中で完全な説明を行う。</p>
+            
+            <div id="en_p30"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">The most common use case for full entries is for publication with an extensive description. The
+                    partial entry can provide a shorter description in its <tt>summary</tt> element, while the full entry contains the complete description in a
+                    <tt>content</tt> element.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p30" class="togglable">原文表示</a></p>
+            
+            <p>またフルエントリは OPDS に、カタログが特定のドメインに固有のメタデータやリンク関係を利用できるようにする、シンプルな拡張の仕組みを与える。</p>
+        
+            <div id="en_p31"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Full entries also provide a simple extension mechanism for OPDS, where catalogs can use
+                    metadata and link relationships that are specific to a given domain.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p31" class="togglable">原文表示</a></p>
+        </section>
+        
+        <section>
+            <hgroup id="Search">
+                <h1>検索</h1>
+                <h2 lang="en">Search</h2>
+            </hgroup>
+            
+            <p>ナビゲーションフィードによるナビゲーションの他に、クライアントは検索によっても出版物にアクセスできる。</p>
+            
+            <div id="en_p32"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Aside from navigating through a series of navigation feeds, a client can also access publications through a search.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p32" class="togglable">原文表示</a></p>
+            
+            <p>OPDS の検索は<a href="http://www.opensearch.org/Home">Open Search フォーマット</a>に基づいており、クライアントがカタログを検索する方法を Open Search Description Document と呼ばれる別の文書に記述する。</p>
+            
+            <div id="en_p33"  lang="en" style="display:none;">
+            <p class="original-text" lang="en">Search in OPDS is based on the <a href="http://www.opensearch.org/Home">Open Search format</a>, where a separate
+                document called an Open Search Description Document describes how a client can search in the catalog.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p33" class="togglable">原文表示</a></p>
+            
+            <p>検索は OPDS のオプショナルな機構となっている。</p>
+            
+            <div id="en_p34"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Search is an optional OPDS feature.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p34" class="togglable">原文表示</a></p>
+        </section>
+        
+        <section>
+            <hgroup id="Examples">
+                <h1>例</h1>
+                <h2 lang="en">Examples</h2>
+            </hgroup>
+            
+            <p>ボブは、OPDS に対応したデバイスを使っており、新しい本を手に入れたいと思っている。</p>
+            
+            <div id="en_p35"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Bob would like to get a new book and uses an OPDS enabled device.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p35" class="togglable">原文表示</a></p>
+            
+            <p>彼はデバイスで OPDS カタログを開いて、利用できる様々なセクションを持ったリストを取得する。</p>
+            
+            <div id="en_p36"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">He points it to an OPDS catalog and gets a list of the different sections available.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p36" class="togglable">原文表示</a></p>
+            
+            <blockquote style="font-style:italic">
+                <p>このカタログがナビゲーションフィードだ。</p>
+                <div id="en_p37"  lang="en" style="display:none;">
+                    <p class="original-text" lang="en">This catalog is a Navigation Feed</p>
+                </div>
+            </blockquote>
+            <p class="toggleLabel"><a href="#en_p37" class="togglable">原文表示</a></p>
+            
+            <p>彼は一つのセクション、例えば &#8220;Scientific books&#8221; を選び、利用できる出版物のリストを取得する。</p>
+            
+            <div id="en_p38"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">He chooses a section, called for example &#8220;Scientific books&#8221;, and gets a list of available publications.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p38" class="togglable">原文表示</a></p>
+            
+            <blockquote style="font-style:italic">
+                <p>このリストが取得フィードだ。このタイトルのリストは、出版物のリストから全ての <tt>title</tt> 要素を取り出すことによって作られている。</p>
+                <div id="en_p39"  lang="en" style="display:none;">
+                    <p class="original-text" lang="en">This list is an Acquisition Feed. The title list is created by getting all the <tt>title</tt> elements in the publication list</p>  
+                </div>
+            </blockquote>
+            <p class="toggleLabel"><a href="#en_p39" class="togglable">原文表示</a></p>
+            
+            <p>彼はある一冊の本（<em>On the Origin of Species</em>）に要約があるか調べてみたいと思う。彼がその本を選ぶと、クライアントはその本の要約と出版日、そしてこの本に関するユーザのレビューを表示する。</p>
+            
+            <div id="en_p40"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">He would like to see if one of the book (<em>On the Origin of Species</em>) has a summary. He selects it and his client provides him with a summary, the publication date and
+                    a link to user reviews of this book.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p40" class="togglable">原文表示</a></p>     
+            
+            <blockquote style="font-style:italic">
+                <p>ボブが出版物を選ぶと、リーディングシステムはフルエントリへのリンクを探し、その内容を取り出してボブに見せる。</p>
+                <div id="en_p41"  lang="en" style="display:none;">
+                    <p class="original-text" lang="en">When Bob selected the publication the reading system looked for a full entry link,
+                        retrieved it and presented its content to Bob.</p>
+                </div>
+            </blockquote>
+            <p class="toggleLabel"><a href="#en_p41" class="togglable">原文表示</a></p> 
+            
+            <p>要約を読んだボブはこの本を手に入れることに決め、ダウンロードボタンをクリックする。</p>
+            
+            <div id="en_p42"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">After reading the summary Bob
+                    decides to acquire the book and clicks on the download
+                    button.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p42" class="togglable">原文表示</a></p>  
+            
+            <blockquote style="font-style:italic">
+                <p>クライアントが本をダウンロードできるアドレスは、取得リンクによってわかる。</p>
+                
+                <div id="en_p43"  lang="en" style="display:none;">
+                    <p class="original-text" lang="en">The acquisition link provided
+                        the address where the client can download the book.</p>
+                </div>
+            </blockquote>
+            <p class="toggleLabel"><a href="#en_p43" class="togglable">原文表示</a></p>  
+            
+            <p>これは OPDS の一般的な利用法を解説したシナリオだ。次にやや高度な利用法を見てみよう。</p>
+            
+            <div id="en_p44"  lang="en" style="display:none;">
+            <p class="original-text" lang="en">This first scenario describes a
+                common usage of OPDS. Here are some more advanced
+                uses.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p44" class="togglable">原文表示</a></p>  
+            
+            <p>ボブは取得フィードに辿り着く前に、幾つものナビゲーションフィードを経由することもある。例えば、<tt>Books &gt; Scientific Books &gt; XIX century Books &gt;
+            High School Classics </tt>（それぞれの &#8216;<tt>&gt;</tt>&#8217; はリンクが続くことを表す。)</p>
+            
+            <div id="en_p45"  lang="en" style="display:none;">
+            <p class="original-text" lang="en">Before getting the Acquisition
+                Feed Bob could traverse any number of Navigation Feeds. For
+                example : <tt>Books &gt; Scientific Books &gt; XIX century Books &gt;
+                High School Classics </tt>(Each &#8216;<tt>&gt;</tt>&#8217; indicates a link followed)</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p45" class="togglable">原文表示</a></p>  
+            
+            <blockquote style="font-style:italic">
+                <p>OPDS カタログフィードは、取得フィードをいう葉を持ったツリーと見なすことができる。</p>
+                <div id="en_p46"  lang="en" style="display:none;">
+                    <p class="original-text" lang="en">OPDS catalogs can be viewed as trees where the leaves are Acquisition Feeds</p>
+                </div>
+            </blockquote>
+            <p class="toggleLabel"><a href="#en_p46" class="togglable">原文表示</a></p>  
+            
+            <p>ボブは新しい本を読みたいのではなく、単に <em>On the Origin of Species</em> が読みたかったのかもしれない。彼はクライアントでカタログを開き、検索機能を使って &#8220;the origin of species&#8221; とタイプする。カタログプロバイダから条件にマッチした <em>On the Origin of Species</em>、<em>Species of the Origin</em>、<em>Original sp&#228;tzel cooking</em> が直接彼に返される。彼はその中から目的の本を選んで取得するだけでよい。</p>
+            
+            <div id="en_p47"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Maybe Bob didn't want to discover new books to read, maybe he only wanted to read
+                    <em>On the Origin of Species</em>. He points the client to the catalog and uses the search
+                    facility and type in &#8220;the origin of species&#8221;. He is
+                    directly provided with matches from the catalog provider
+                    <em>On the Origin of Species</em>,<em>Species of the Origin</em>,
+                    <em>Original sp&#228;tzel cooking</em>.
+                    He then only has to choose the desired book and acquires it.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p47" class="togglable">原文表示</a></p>  
+            
+            <blockquote  style="font-style:italic">
+                <p>この例では、クライアントはマッチするはずの出版物を探すのに Open Search Description Document を利用する。カタログプロバイダは問い合わせに対して取得フィードを直接返す。</p>
+                <div id="en_p48"  lang="en" style="display:none;">
+                    <p class="original-text" lang="en">In this example, the client
+                        uses an Open Search Description Document to look for potential
+                        matches. The Catalog provider responds to the query directly with
+                        an Acquisition feed.</p>
+                </div>
+            </blockquote>
+            <p class="toggleLabel"><a href="#en_p48" class="togglable">原文表示</a></p>  
+            
+            <p>この <em>On the Origin of Species</em> の特定の版は無料では手に入れられなかったもしれない。カタログプロバイダは Buy のリレーションを利用し、リンクの中に価格を提示することができる。この本を取得しようとすれば、ボブはコンテンツを手に入れる前に必要な支払いを要求されただろう。</p>
+            
+            <div id="en_p49"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">This particular edition of <em>On the Origin of Species</em>
+                    might not be available freely. The catalog provider could
+                    use a Buy relationship and indicate a price for it in the link.
+                    Upon choosing to acquire this book Bob would have been asked to
+                    give due payment before getting the desired content.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p49" class="togglable">原文表示</a></p>  
+            
+            <blockquote style="font-style:italic">
+                <p>パブリケーションのエントリは複数の取得リンクを持つことができる。カタログプロバイダは 二番目のリンクを、Sample のリレーションを利用して、本のサンプル用の章に使うこともできる。</p>
+                <div id="en_p50"  lang="en" style="display:none;">
+                    <p class="original-text" lang="en">Multiple acquisition links can be provided in publications&#8217; entries. The catalog
+                        provider could also have offered a second link with the Sample
+                        relationship pointing to a sample chapter from the book.</p>
+                </div>
+            </blockquote>
+            <p class="toggleLabel"><a href="#en_p50" class="togglable">原文表示</a></p>  
+        </section>
+        
+        <section>
+            <hgroup id="Autodiscovery">
+                <h1>オートディスカバリ</h1>
+                <h2 lang="en">Autodiscovery</h2>
+            </hgroup>
+            
+            <p>OPDS カタログはクライアントに自動的に見つけてもらうことができる。<tt>link</tt> タグに <tt>type=&#8221;application/atom+xml;profile=opds-catalog&#8221;</tt> という属性を指定するだけだ。<a href="http://opds-spec.org/specs/opds-catalog-1-0-20100830/#Discovering_OPDS_Catalogs">この仕組の詳細は仕様に書かれている</a>。</p>
+            
+            <div id="en_p51"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">OPDS Catalog can be automatically discovered by clients. Simply set a 
+                    <tt>link</tt> tag with <tt>type=&#8221;application/atom+xml;profile=opds-catalog&#8221;</tt>
+                    attribute. <a href="http://opds-spec.org/specs/opds-catalog-1-0-20100830/#Discovering_OPDS_Catalogs">More mechanisms are detailed in the spec</a>.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p51" class="togglable">原文表示</a></p>  
+            
+            <p>オートディスカバリは OPDS のオプショナルな機構となっている。</p>
+            
+            <div id="en_p52"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Autodiscovery is an optional OPDS feature.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p52" class="togglable">原文表示</a></p>  
+        </section>
+        
+        <section>
+            <hgroup id="Crawling_feeds">
+                <h1>フィードのクロール</h1>
+                <h2 lang="en">Crawling feeds</h2>
+            </hgroup>
+            
+            <p>クライアントは出版物に関する全てのデータを必要とすることがあるかもしれない。OPDS ワークグループこの潜在的な課題を認識しており、出版社に対して<a href="http://opds-spec.org/specs/opds-catalog-1-0-20100830/#Complete_Acquisition_Feeds">クロール専用のフィード</a>を提供することを推奨している。</p>
+            
+            <div id="en_p53"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Sometimes clients may wish to get all the data about publications. OPDS workgroup is aware of this
+                    potential issue and recommends that publishers provide <a href="http://opds-spec.org/specs/opds-catalog-1-0-20100830/#Complete_Acquisition_Feeds">dedicated crawlable feeds</a>.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p53" class="togglable">原文表示</a></p>  
+            
+            <p>クローラは OPDS のオプショナルな機構となっている。</p>
+            
+            <div id="en_p54"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Crawler optimized feed is an optional OPDS feature.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p54" class="togglable">原文表示</a></p>  
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>はじめてみよう</h1>
+                <h2 lang="en">Getting Started</h2>
+            </hgroup>
+            
+            <p>Feedbooks では OPDS カタログを <a href="http://www.feedbooks.com/catalog">http://www.feedbooks.com/catalog</a> で公開している。</p>
+            
+            <div id="en_p55"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Feedbooks provide an OPDS catalog at: <a href="http://www.feedbooks.com/catalog">http://www.feedbooks.com/catalog</a></p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p55" class="togglable">原文表示</a></p>
+            
+            <p>OPDS で何ができるかの先進的な例として我々のフィードとエントリを見てもらいたい。</p>
+            
+            <div id="en_p56"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">Take a look at our feeds and entries for more advanced examples of what you can do with OPDS.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p56" class="togglable">原文表示</a></p>
+            
+            <p>あなたが自分のカタログをテストするには、我々が用意した <a href="/help/ecosystem#software">Feedbooks のカタログに接続したリーディングシステム</a>の一覧を見て欲しい。</p>
+            
+            <div id="en_p57"  lang="en" style="display:none;">
+                <p class="original-text" lang="en">To test your own catalog, take a look at our list of <a href="/help/ecosystem#software">reading systems connected to the Feedbooks catalog</a>.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p57" class="togglable">原文表示</a></p>
+        </section>
+
+    </body>
+</html>

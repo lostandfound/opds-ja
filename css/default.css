@@ -1,0 +1,757 @@
+@namespace "http://www.w3.org/1999/xhtml";
+@namespace epub "http://www.idpf.org/2007/ops";
+/* ========================================================================== */
+/*      Reset                                                                 */
+/* ========================================================================== */
+[hidden], area, base, basefont, command, datalist, head, input[type=hidden], link, menu[type=context], meta, noembed, noframes, param, rp,
+script, source, style, title {
+  display: none;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q,
+s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, hr, input, table, caption, tbody, tfoot, thead, tr, th, td, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside, canvas, embed, figure, figcaption, footer, header, hgroup, nav, ruby, section, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+address, caption, cite, code, dfn, em, var, strong, th, td {
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+blockquote, q {
+  quotes: "" "";
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a img {
+  border: none;
+}
+
+/* ========================================================================== */
+/*      Basic style                                                           */
+/* ========================================================================== */
+html {
+  -webkit-writing-mode: horizontal-tb;
+  -epub-writing-mode: horizontal-tb;
+  writing-mode: horizontal-tb;
+}
+
+body {
+  font-family: "HiraMinProN-W3", "IPAexMincho", "MS Mincho", serif;
+  font-size: 100%;
+  line-height: 1.6;
+}
+
+p {
+  font-size: inherit;
+  line-height: 1.6;
+  text-indent: 0em;
+}
+
+blockquote {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 3em;
+  padding-right: 0;
+}
+
+ul {
+  list-style-type: disc;
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 3em;
+  padding-right: 0;
+}
+
+dl {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 3em;
+  margin-right: 0;
+}
+
+dt {
+  font-family: "HiraKakuProN-W3", "IPAexGothic", "MS Gothic", sans-serif;
+}
+
+dd {
+  margin-top: 0;
+  margin-bottom: 2em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+figure {
+  max-width: 100%;
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+figcaption {
+  font-family: "HiraKakuProN-W3", "IPAexGothic", "MS Gothic", sans-serif;
+  font-size: 0.88em;
+  ine-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  background: #CDCDCD;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+small {
+  font-size: 0.75em;
+}
+
+s {
+  text-decoration: line-through;
+}
+
+cite {
+  font-style: italic;
+}
+
+abbr, acronym {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+}
+
+code {
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+var {
+  font-style: italic;
+}
+
+samp, kbd {
+  font-family: monospace;
+}
+
+sub {
+  font-size: 0.75em;
+  vertical-align: sub;
+  border-top: 1px solid #CDCDCD;
+}
+
+sup {
+  font-size: 0.75em;
+  vertical-align: super;
+}
+
+i {
+  font-style: italic;
+}
+
+b {
+  font-weight: bold;
+}
+
+u {
+  text-decoration: underline;
+}
+
+mark {
+  background: #FFFF00;
+}
+
+rt {
+  font-size: 0.5em;
+}
+
+strike {
+  text-decoration: line-through;
+}
+
+wbr {
+  white-space: normal;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+hr {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 0;
+  margin-right: 0;
+  border-top: 1px solid #CDCDCD;
+}
+
+table {
+  margin-bottom: 3em;
+}
+
+h2 {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: inherit;
+}
+
+h3 {
+  margin-top: 1.867em;
+  margin-bottom: 0.533em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: inherit;
+}
+
+h4 {
+  margin-top: 1.6em;
+  margin-bottom: 0em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1em;
+  line-height: 1.6;
+  color: inherit;
+}
+
+h5 {
+  margin-top: 0.109em;
+  margin-bottom: 0.109em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 0.88em;
+  line-height: 1.6;
+  color: inherit;
+}
+
+h6 {
+  margin-top: 0.267em;
+  margin-bottom: 0.267em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 0.75em;
+  line-height: 1.6;
+  color: inherit;
+}
+
+h1 {
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 2em;
+  line-height: 1.6;
+}
+
+hgroup h1 {
+  margin-bottom: 0;
+}
+
+hgroup h2 {
+  margin-top: -0.133em;
+  margin-bottom: 1.867em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+article h1, aside h1, nav h1, section h1 {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1.5em;
+  line-height: 1.6;
+}
+article hgroup h1, aside hgroup h1, nav hgroup h1, section hgroup h1 {
+  margin-bottom: 0;
+}
+article hgroup h2, aside hgroup h2, nav hgroup h2, section hgroup h2 {
+  margin-top: 0em;
+  margin-bottom: 1.2em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1em;
+  line-height: 1.6;
+}
+article article h1, article aside h1, article nav h1, article section h1, aside article h1, aside aside h1, aside nav h1, aside section h1, nav article h1, nav aside h1, nav nav h1, nav section h1, section article h1, section aside h1, section nav h1, section section h1 {
+  margin-top: 1.867em;
+  margin-bottom: 0.533em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+article article hgroup h1, article aside hgroup h1, article nav hgroup h1, article section hgroup h1, aside article hgroup h1, aside aside hgroup h1, aside nav hgroup h1, aside section hgroup h1, nav article hgroup h1, nav aside hgroup h1, nav nav hgroup h1, nav section hgroup h1, section article hgroup h1, section aside hgroup h1, section nav hgroup h1, section section hgroup h1 {
+  margin-bottom: 0;
+}
+article article hgroup h2, article aside hgroup h2, article nav hgroup h2, article section hgroup h2, aside article hgroup h2, aside aside hgroup h2, aside nav hgroup h2, aside section hgroup h2, nav article hgroup h2, nav aside hgroup h2, nav nav hgroup h2, nav section hgroup h2, section article hgroup h2, section aside hgroup h2, section nav hgroup h2, section section hgroup h2 {
+  margin-top: 0.109em;
+  margin-bottom: 0.836em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 0.88em;
+  line-height: 1.6;
+}
+article article article h1, article article aside h1, article article nav h1, article article section h1, article aside article h1, article aside aside h1, article aside nav h1, article aside section h1, article nav article h1, article nav aside h1, article nav nav h1, article nav section h1, article section article h1, article section aside h1, article section nav h1, article section section h1, aside article article h1, aside article aside h1, aside article nav h1, aside article section h1, aside aside article h1, aside aside aside h1, aside aside nav h1, aside aside section h1, aside nav article h1, aside nav aside h1, aside nav nav h1, aside nav section h1, aside section article h1, aside section aside h1, aside section nav h1, aside section section h1, nav article article h1, nav article aside h1, nav article nav h1, nav article section h1, nav aside article h1, nav aside aside h1, nav aside nav h1, nav aside section h1, nav nav article h1, nav nav aside h1, nav nav nav h1, nav nav section h1, nav section article h1, nav section aside h1, nav section nav h1, nav section section h1, section article article h1, section article aside h1, section article nav h1, section article section h1, section aside article h1, section aside aside h1, section aside nav h1, section aside section h1, section nav article h1, section nav aside h1, section nav nav h1, section nav section h1, section section article h1, section section aside h1, section section nav h1, section section section h1 {
+  margin-top: 1.6em;
+  margin-bottom: 0em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1em;
+  line-height: 1.6;
+}
+article article article hgroup h1, article article aside hgroup h1, article article nav hgroup h1, article article section hgroup h1, article aside article hgroup h1, article aside aside hgroup h1, article aside nav hgroup h1, article aside section hgroup h1, article nav article hgroup h1, article nav aside hgroup h1, article nav nav hgroup h1, article nav section hgroup h1, article section article hgroup h1, article section aside hgroup h1, article section nav hgroup h1, article section section hgroup h1, aside article article hgroup h1, aside article aside hgroup h1, aside article nav hgroup h1, aside article section hgroup h1, aside aside article hgroup h1, aside aside aside hgroup h1, aside aside nav hgroup h1, aside aside section hgroup h1, aside nav article hgroup h1, aside nav aside hgroup h1, aside nav nav hgroup h1, aside nav section hgroup h1, aside section article hgroup h1, aside section aside hgroup h1, aside section nav hgroup h1, aside section section hgroup h1, nav article article hgroup h1, nav article aside hgroup h1, nav article nav hgroup h1, nav article section hgroup h1, nav aside article hgroup h1, nav aside aside hgroup h1, nav aside nav hgroup h1, nav aside section hgroup h1, nav nav article hgroup h1, nav nav aside hgroup h1, nav nav nav hgroup h1, nav nav section hgroup h1, nav section article hgroup h1, nav section aside hgroup h1, nav section nav hgroup h1, nav section section hgroup h1, section article article hgroup h1, section article aside hgroup h1, section article nav hgroup h1, section article section hgroup h1, section aside article hgroup h1, section aside aside hgroup h1, section aside nav hgroup h1, section aside section hgroup h1, section nav article hgroup h1, section nav aside hgroup h1, section nav nav hgroup h1, section nav section hgroup h1, section section article hgroup h1, section section aside hgroup h1, section section nav hgroup h1, section section section hgroup h1 {
+  margin-bottom: 0;
+}
+article article article hgroup h2, article article aside hgroup h2, article article nav hgroup h2, article article section hgroup h2, article aside article hgroup h2, article aside aside hgroup h2, article aside nav hgroup h2, article aside section hgroup h2, article nav article hgroup h2, article nav aside hgroup h2, article nav nav hgroup h2, article nav section hgroup h2, article section article hgroup h2, article section aside hgroup h2, article section nav hgroup h2, article section section hgroup h2, aside article article hgroup h2, aside article aside hgroup h2, aside article nav hgroup h2, aside article section hgroup h2, aside aside article hgroup h2, aside aside aside hgroup h2, aside aside nav hgroup h2, aside aside section hgroup h2, aside nav article hgroup h2, aside nav aside hgroup h2, aside nav nav hgroup h2, aside nav section hgroup h2, aside section article hgroup h2, aside section aside hgroup h2, aside section nav hgroup h2, aside section section hgroup h2, nav article article hgroup h2, nav article aside hgroup h2, nav article nav hgroup h2, nav article section hgroup h2, nav aside article hgroup h2, nav aside aside hgroup h2, nav aside nav hgroup h2, nav aside section hgroup h2, nav nav article hgroup h2, nav nav aside hgroup h2, nav nav nav hgroup h2, nav nav section hgroup h2, nav section article hgroup h2, nav section aside hgroup h2, nav section nav hgroup h2, nav section section hgroup h2, section article article hgroup h2, section article aside hgroup h2, section article nav hgroup h2, section article section hgroup h2, section aside article hgroup h2, section aside aside hgroup h2, section aside nav hgroup h2, section aside section hgroup h2, section nav article hgroup h2, section nav aside hgroup h2, section nav nav hgroup h2, section nav section hgroup h2, section section article hgroup h2, section section aside hgroup h2, section section nav hgroup h2, section section section hgroup h2 {
+  margin-top: 0.267em;
+  margin-bottom: 0.267em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 0.75em;
+  line-height: 1.6;
+}
+article article article article h1, article article article aside h1, article article article nav h1, article article article section h1, article article aside article h1, article article aside aside h1, article article aside nav h1, article article aside section h1, article article nav article h1, article article nav aside h1, article article nav nav h1, article article nav section h1, article article section article h1, article article section aside h1, article article section nav h1, article article section section h1, article aside article article h1, article aside article aside h1, article aside article nav h1, article aside article section h1, article aside aside article h1, article aside aside aside h1, article aside aside nav h1, article aside aside section h1, article aside nav article h1, article aside nav aside h1, article aside nav nav h1, article aside nav section h1, article aside section article h1, article aside section aside h1, article aside section nav h1, article aside section section h1, article nav article article h1, article nav article aside h1, article nav article nav h1, article nav article section h1, article nav aside article h1, article nav aside aside h1, article nav aside nav h1, article nav aside section h1, article nav nav article h1, article nav nav aside h1, article nav nav nav h1, article nav nav section h1, article nav section article h1, article nav section aside h1, article nav section nav h1, article nav section section h1, article section article article h1, article section article aside h1, article section article nav h1, article section article section h1, article section aside article h1, article section aside aside h1, article section aside nav h1, article section aside section h1, article section nav article h1, article section nav aside h1, article section nav nav h1, article section nav section h1, article section section article h1, article section section aside h1, article section section nav h1, article section section section h1, aside article article article h1, aside article article aside h1, aside article article nav h1, aside article article section h1, aside article aside article h1, aside article aside aside h1, aside article aside nav h1, aside article aside section h1, aside article nav article h1, aside article nav aside h1, aside article nav nav h1, aside article nav section h1, aside article section article h1, aside article section aside h1, aside article section nav h1, aside article section section h1, aside aside article article h1, aside aside article aside h1, aside aside article nav h1, aside aside article section h1, aside aside aside article h1, aside aside aside aside h1, aside aside aside nav h1, aside aside aside section h1, aside aside nav article h1, aside aside nav aside h1, aside aside nav nav h1, aside aside nav section h1, aside aside section article h1, aside aside section aside h1, aside aside section nav h1, aside aside section section h1, aside nav article article h1, aside nav article aside h1, aside nav article nav h1, aside nav article section h1, aside nav aside article h1, aside nav aside aside h1, aside nav aside nav h1, aside nav aside section h1, aside nav nav article h1, aside nav nav aside h1, aside nav nav nav h1, aside nav nav section h1, aside nav section article h1, aside nav section aside h1, aside nav section nav h1, aside nav section section h1, aside section article article h1, aside section article aside h1, aside section article nav h1, aside section article section h1, aside section aside article h1, aside section aside aside h1, aside section aside nav h1, aside section aside section h1, aside section nav article h1, aside section nav aside h1, aside section nav nav h1, aside section nav section h1, aside section section article h1, aside section section aside h1, aside section section nav h1, aside section section section h1, nav article article article h1, nav article article aside h1, nav article article nav h1, nav article article section h1, nav article aside article h1, nav article aside aside h1, nav article aside nav h1, nav article aside section h1, nav article nav article h1, nav article nav aside h1, nav article nav nav h1, nav article nav section h1, nav article section article h1, nav article section aside h1, nav article section nav h1, nav article section section h1, nav aside article article h1, nav aside article aside h1, nav aside article nav h1, nav aside article section h1, nav aside aside article h1, nav aside aside aside h1, nav aside aside nav h1, nav aside aside section h1, nav aside nav article h1, nav aside nav aside h1, nav aside nav nav h1, nav aside nav section h1, nav aside section article h1, nav aside section aside h1, nav aside section nav h1, nav aside section section h1, nav nav article article h1, nav nav article aside h1, nav nav article nav h1, nav nav article section h1, nav nav aside article h1, nav nav aside aside h1, nav nav aside nav h1, nav nav aside section h1, nav nav nav article h1, nav nav nav aside h1, nav nav nav nav h1, nav nav nav section h1, nav nav section article h1, nav nav section aside h1, nav nav section nav h1, nav nav section section h1, nav section article article h1, nav section article aside h1, nav section article nav h1, nav section article section h1, nav section aside article h1, nav section aside aside h1, nav section aside nav h1, nav section aside section h1, nav section nav article h1, nav section nav aside h1, nav section nav nav h1, nav section nav section h1, nav section section article h1, nav section section aside h1, nav section section nav h1, nav section section section h1, section article article article h1, section article article aside h1, section article article nav h1, section article article section h1, section article aside article h1, section article aside aside h1, section article aside nav h1, section article aside section h1, section article nav article h1, section article nav aside h1, section article nav nav h1, section article nav section h1, section article section article h1, section article section aside h1, section article section nav h1, section article section section h1, section aside article article h1, section aside article aside h1, section aside article nav h1, section aside article section h1, section aside aside article h1, section aside aside aside h1, section aside aside nav h1, section aside aside section h1, section aside nav article h1, section aside nav aside h1, section aside nav nav h1, section aside nav section h1, section aside section article h1, section aside section aside h1, section aside section nav h1, section aside section section h1, section nav article article h1, section nav article aside h1, section nav article nav h1, section nav article section h1, section nav aside article h1, section nav aside aside h1, section nav aside nav h1, section nav aside section h1, section nav nav article h1, section nav nav aside h1, section nav nav nav h1, section nav nav section h1, section nav section article h1, section nav section aside h1, section nav section nav h1, section nav section section h1, section section article article h1, section section article aside h1, section section article nav h1, section section article section h1, section section aside article h1, section section aside aside h1, section section aside nav h1, section section aside section h1, section section nav article h1, section section nav aside h1, section section nav nav h1, section section nav section h1, section section section article h1, section section section aside h1, section section section nav h1, section section section section h1 {
+  margin-top: 0.109em;
+  margin-bottom: 0.109em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 0.88em;
+  line-height: 1.6;
+}
+article article article article hgroup h1, article article article aside hgroup h1, article article article nav hgroup h1, article article article section hgroup h1, article article aside article hgroup h1, article article aside aside hgroup h1, article article aside nav hgroup h1, article article aside section hgroup h1, article article nav article hgroup h1, article article nav aside hgroup h1, article article nav nav hgroup h1, article article nav section hgroup h1, article article section article hgroup h1, article article section aside hgroup h1, article article section nav hgroup h1, article article section section hgroup h1, article aside article article hgroup h1, article aside article aside hgroup h1, article aside article nav hgroup h1, article aside article section hgroup h1, article aside aside article hgroup h1, article aside aside aside hgroup h1, article aside aside nav hgroup h1, article aside aside section hgroup h1, article aside nav article hgroup h1, article aside nav aside hgroup h1, article aside nav nav hgroup h1, article aside nav section hgroup h1, article aside section article hgroup h1, article aside section aside hgroup h1, article aside section nav hgroup h1, article aside section section hgroup h1, article nav article article hgroup h1, article nav article aside hgroup h1, article nav article nav hgroup h1, article nav article section hgroup h1, article nav aside article hgroup h1, article nav aside aside hgroup h1, article nav aside nav hgroup h1, article nav aside section hgroup h1, article nav nav article hgroup h1, article nav nav aside hgroup h1, article nav nav nav hgroup h1, article nav nav section hgroup h1, article nav section article hgroup h1, article nav section aside hgroup h1, article nav section nav hgroup h1, article nav section section hgroup h1, article section article article hgroup h1, article section article aside hgroup h1, article section article nav hgroup h1, article section article section hgroup h1, article section aside article hgroup h1, article section aside aside hgroup h1, article section aside nav hgroup h1, article section aside section hgroup h1, article section nav article hgroup h1, article section nav aside hgroup h1, article section nav nav hgroup h1, article section nav section hgroup h1, article section section article hgroup h1, article section section aside hgroup h1, article section section nav hgroup h1, article section section section hgroup h1, aside article article article hgroup h1, aside article article aside hgroup h1, aside article article nav hgroup h1, aside article article section hgroup h1, aside article aside article hgroup h1, aside article aside aside hgroup h1, aside article aside nav hgroup h1, aside article aside section hgroup h1, aside article nav article hgroup h1, aside article nav aside hgroup h1, aside article nav nav hgroup h1, aside article nav section hgroup h1, aside article section article hgroup h1, aside article section aside hgroup h1, aside article section nav hgroup h1, aside article section section hgroup h1, aside aside article article hgroup h1, aside aside article aside hgroup h1, aside aside article nav hgroup h1, aside aside article section hgroup h1, aside aside aside article hgroup h1, aside aside aside aside hgroup h1, aside aside aside nav hgroup h1, aside aside aside section hgroup h1, aside aside nav article hgroup h1, aside aside nav aside hgroup h1, aside aside nav nav hgroup h1, aside aside nav section hgroup h1, aside aside section article hgroup h1, aside aside section aside hgroup h1, aside aside section nav hgroup h1, aside aside section section hgroup h1, aside nav article article hgroup h1, aside nav article aside hgroup h1, aside nav article nav hgroup h1, aside nav article section hgroup h1, aside nav aside article hgroup h1, aside nav aside aside hgroup h1, aside nav aside nav hgroup h1, aside nav aside section hgroup h1, aside nav nav article hgroup h1, aside nav nav aside hgroup h1, aside nav nav nav hgroup h1, aside nav nav section hgroup h1, aside nav section article hgroup h1, aside nav section aside hgroup h1, aside nav section nav hgroup h1, aside nav section section hgroup h1, aside section article article hgroup h1, aside section article aside hgroup h1, aside section article nav hgroup h1, aside section article section hgroup h1, aside section aside article hgroup h1, aside section aside aside hgroup h1, aside section aside nav hgroup h1, aside section aside section hgroup h1, aside section nav article hgroup h1, aside section nav aside hgroup h1, aside section nav nav hgroup h1, aside section nav section hgroup h1, aside section section article hgroup h1, aside section section aside hgroup h1, aside section section nav hgroup h1, aside section section section hgroup h1, nav article article article hgroup h1, nav article article aside hgroup h1, nav article article nav hgroup h1, nav article article section hgroup h1, nav article aside article hgroup h1, nav article aside aside hgroup h1, nav article aside nav hgroup h1, nav article aside section hgroup h1, nav article nav article hgroup h1, nav article nav aside hgroup h1, nav article nav nav hgroup h1, nav article nav section hgroup h1, nav article section article hgroup h1, nav article section aside hgroup h1, nav article section nav hgroup h1, nav article section section hgroup h1, nav aside article article hgroup h1, nav aside article aside hgroup h1, nav aside article nav hgroup h1, nav aside article section hgroup h1, nav aside aside article hgroup h1, nav aside aside aside hgroup h1, nav aside aside nav hgroup h1, nav aside aside section hgroup h1, nav aside nav article hgroup h1, nav aside nav aside hgroup h1, nav aside nav nav hgroup h1, nav aside nav section hgroup h1, nav aside section article hgroup h1, nav aside section aside hgroup h1, nav aside section nav hgroup h1, nav aside section section hgroup h1, nav nav article article hgroup h1, nav nav article aside hgroup h1, nav nav article nav hgroup h1, nav nav article section hgroup h1, nav nav aside article hgroup h1, nav nav aside aside hgroup h1, nav nav aside nav hgroup h1, nav nav aside section hgroup h1, nav nav nav article hgroup h1, nav nav nav aside hgroup h1, nav nav nav nav hgroup h1, nav nav nav section hgroup h1, nav nav section article hgroup h1, nav nav section aside hgroup h1, nav nav section nav hgroup h1, nav nav section section hgroup h1, nav section article article hgroup h1, nav section article aside hgroup h1, nav section article nav hgroup h1, nav section article section hgroup h1, nav section aside article hgroup h1, nav section aside aside hgroup h1, nav section aside nav hgroup h1, nav section aside section hgroup h1, nav section nav article hgroup h1, nav section nav aside hgroup h1, nav section nav nav hgroup h1, nav section nav section hgroup h1, nav section section article hgroup h1, nav section section aside hgroup h1, nav section section nav hgroup h1, nav section section section hgroup h1, section article article article hgroup h1, section article article aside hgroup h1, section article article nav hgroup h1, section article article section hgroup h1, section article aside article hgroup h1, section article aside aside hgroup h1, section article aside nav hgroup h1, section article aside section hgroup h1, section article nav article hgroup h1, section article nav aside hgroup h1, section article nav nav hgroup h1, section article nav section hgroup h1, section article section article hgroup h1, section article section aside hgroup h1, section article section nav hgroup h1, section article section section hgroup h1, section aside article article hgroup h1, section aside article aside hgroup h1, section aside article nav hgroup h1, section aside article section hgroup h1, section aside aside article hgroup h1, section aside aside aside hgroup h1, section aside aside nav hgroup h1, section aside aside section hgroup h1, section aside nav article hgroup h1, section aside nav aside hgroup h1, section aside nav nav hgroup h1, section aside nav section hgroup h1, section aside section article hgroup h1, section aside section aside hgroup h1, section aside section nav hgroup h1, section aside section section hgroup h1, section nav article article hgroup h1, section nav article aside hgroup h1, section nav article nav hgroup h1, section nav article section hgroup h1, section nav aside article hgroup h1, section nav aside aside hgroup h1, section nav aside nav hgroup h1, section nav aside section hgroup h1, section nav nav article hgroup h1, section nav nav aside hgroup h1, section nav nav nav hgroup h1, section nav nav section hgroup h1, section nav section article hgroup h1, section nav section aside hgroup h1, section nav section nav hgroup h1, section nav section section hgroup h1, section section article article hgroup h1, section section article aside hgroup h1, section section article nav hgroup h1, section section article section hgroup h1, section section aside article hgroup h1, section section aside aside hgroup h1, section section aside nav hgroup h1, section section aside section hgroup h1, section section nav article hgroup h1, section section nav aside hgroup h1, section section nav nav hgroup h1, section section nav section hgroup h1, section section section article hgroup h1, section section section aside hgroup h1, section section section nav hgroup h1, section section section section hgroup h1 {
+  margin-bottom: 0;
+}
+article article article article hgroup h2, article article article aside hgroup h2, article article article nav hgroup h2, article article article section hgroup h2, article article aside article hgroup h2, article article aside aside hgroup h2, article article aside nav hgroup h2, article article aside section hgroup h2, article article nav article hgroup h2, article article nav aside hgroup h2, article article nav nav hgroup h2, article article nav section hgroup h2, article article section article hgroup h2, article article section aside hgroup h2, article article section nav hgroup h2, article article section section hgroup h2, article aside article article hgroup h2, article aside article aside hgroup h2, article aside article nav hgroup h2, article aside article section hgroup h2, article aside aside article hgroup h2, article aside aside aside hgroup h2, article aside aside nav hgroup h2, article aside aside section hgroup h2, article aside nav article hgroup h2, article aside nav aside hgroup h2, article aside nav nav hgroup h2, article aside nav section hgroup h2, article aside section article hgroup h2, article aside section aside hgroup h2, article aside section nav hgroup h2, article aside section section hgroup h2, article nav article article hgroup h2, article nav article aside hgroup h2, article nav article nav hgroup h2, article nav article section hgroup h2, article nav aside article hgroup h2, article nav aside aside hgroup h2, article nav aside nav hgroup h2, article nav aside section hgroup h2, article nav nav article hgroup h2, article nav nav aside hgroup h2, article nav nav nav hgroup h2, article nav nav section hgroup h2, article nav section article hgroup h2, article nav section aside hgroup h2, article nav section nav hgroup h2, article nav section section hgroup h2, article section article article hgroup h2, article section article aside hgroup h2, article section article nav hgroup h2, article section article section hgroup h2, article section aside article hgroup h2, article section aside aside hgroup h2, article section aside nav hgroup h2, article section aside section hgroup h2, article section nav article hgroup h2, article section nav aside hgroup h2, article section nav nav hgroup h2, article section nav section hgroup h2, article section section article hgroup h2, article section section aside hgroup h2, article section section nav hgroup h2, article section section section hgroup h2, aside article article article hgroup h2, aside article article aside hgroup h2, aside article article nav hgroup h2, aside article article section hgroup h2, aside article aside article hgroup h2, aside article aside aside hgroup h2, aside article aside nav hgroup h2, aside article aside section hgroup h2, aside article nav article hgroup h2, aside article nav aside hgroup h2, aside article nav nav hgroup h2, aside article nav section hgroup h2, aside article section article hgroup h2, aside article section aside hgroup h2, aside article section nav hgroup h2, aside article section section hgroup h2, aside aside article article hgroup h2, aside aside article aside hgroup h2, aside aside article nav hgroup h2, aside aside article section hgroup h2, aside aside aside article hgroup h2, aside aside aside aside hgroup h2, aside aside aside nav hgroup h2, aside aside aside section hgroup h2, aside aside nav article hgroup h2, aside aside nav aside hgroup h2, aside aside nav nav hgroup h2, aside aside nav section hgroup h2, aside aside section article hgroup h2, aside aside section aside hgroup h2, aside aside section nav hgroup h2, aside aside section section hgroup h2, aside nav article article hgroup h2, aside nav article aside hgroup h2, aside nav article nav hgroup h2, aside nav article section hgroup h2, aside nav aside article hgroup h2, aside nav aside aside hgroup h2, aside nav aside nav hgroup h2, aside nav aside section hgroup h2, aside nav nav article hgroup h2, aside nav nav aside hgroup h2, aside nav nav nav hgroup h2, aside nav nav section hgroup h2, aside nav section article hgroup h2, aside nav section aside hgroup h2, aside nav section nav hgroup h2, aside nav section section hgroup h2, aside section article article hgroup h2, aside section article aside hgroup h2, aside section article nav hgroup h2, aside section article section hgroup h2, aside section aside article hgroup h2, aside section aside aside hgroup h2, aside section aside nav hgroup h2, aside section aside section hgroup h2, aside section nav article hgroup h2, aside section nav aside hgroup h2, aside section nav nav hgroup h2, aside section nav section hgroup h2, aside section section article hgroup h2, aside section section aside hgroup h2, aside section section nav hgroup h2, aside section section section hgroup h2, nav article article article hgroup h2, nav article article aside hgroup h2, nav article article nav hgroup h2, nav article article section hgroup h2, nav article aside article hgroup h2, nav article aside aside hgroup h2, nav article aside nav hgroup h2, nav article aside section hgroup h2, nav article nav article hgroup h2, nav article nav aside hgroup h2, nav article nav nav hgroup h2, nav article nav section hgroup h2, nav article section article hgroup h2, nav article section aside hgroup h2, nav article section nav hgroup h2, nav article section section hgroup h2, nav aside article article hgroup h2, nav aside article aside hgroup h2, nav aside article nav hgroup h2, nav aside article section hgroup h2, nav aside aside article hgroup h2, nav aside aside aside hgroup h2, nav aside aside nav hgroup h2, nav aside aside section hgroup h2, nav aside nav article hgroup h2, nav aside nav aside hgroup h2, nav aside nav nav hgroup h2, nav aside nav section hgroup h2, nav aside section article hgroup h2, nav aside section aside hgroup h2, nav aside section nav hgroup h2, nav aside section section hgroup h2, nav nav article article hgroup h2, nav nav article aside hgroup h2, nav nav article nav hgroup h2, nav nav article section hgroup h2, nav nav aside article hgroup h2, nav nav aside aside hgroup h2, nav nav aside nav hgroup h2, nav nav aside section hgroup h2, nav nav nav article hgroup h2, nav nav nav aside hgroup h2, nav nav nav nav hgroup h2, nav nav nav section hgroup h2, nav nav section article hgroup h2, nav nav section aside hgroup h2, nav nav section nav hgroup h2, nav nav section section hgroup h2, nav section article article hgroup h2, nav section article aside hgroup h2, nav section article nav hgroup h2, nav section article section hgroup h2, nav section aside article hgroup h2, nav section aside aside hgroup h2, nav section aside nav hgroup h2, nav section aside section hgroup h2, nav section nav article hgroup h2, nav section nav aside hgroup h2, nav section nav nav hgroup h2, nav section nav section hgroup h2, nav section section article hgroup h2, nav section section aside hgroup h2, nav section section nav hgroup h2, nav section section section hgroup h2, section article article article hgroup h2, section article article aside hgroup h2, section article article nav hgroup h2, section article article section hgroup h2, section article aside article hgroup h2, section article aside aside hgroup h2, section article aside nav hgroup h2, section article aside section hgroup h2, section article nav article hgroup h2, section article nav aside hgroup h2, section article nav nav hgroup h2, section article nav section hgroup h2, section article section article hgroup h2, section article section aside hgroup h2, section article section nav hgroup h2, section article section section hgroup h2, section aside article article hgroup h2, section aside article aside hgroup h2, section aside article nav hgroup h2, section aside article section hgroup h2, section aside aside article hgroup h2, section aside aside aside hgroup h2, section aside aside nav hgroup h2, section aside aside section hgroup h2, section aside nav article hgroup h2, section aside nav aside hgroup h2, section aside nav nav hgroup h2, section aside nav section hgroup h2, section aside section article hgroup h2, section aside section aside hgroup h2, section aside section nav hgroup h2, section aside section section hgroup h2, section nav article article hgroup h2, section nav article aside hgroup h2, section nav article nav hgroup h2, section nav article section hgroup h2, section nav aside article hgroup h2, section nav aside aside hgroup h2, section nav aside nav hgroup h2, section nav aside section hgroup h2, section nav nav article hgroup h2, section nav nav aside hgroup h2, section nav nav nav hgroup h2, section nav nav section hgroup h2, section nav section article hgroup h2, section nav section aside hgroup h2, section nav section nav hgroup h2, section nav section section hgroup h2, section section article article hgroup h2, section section article aside hgroup h2, section section article nav hgroup h2, section section article section hgroup h2, section section aside article hgroup h2, section section aside aside hgroup h2, section section aside nav hgroup h2, section section aside section hgroup h2, section section nav article hgroup h2, section section nav aside hgroup h2, section section nav nav hgroup h2, section section nav section hgroup h2, section section section article hgroup h2, section section section aside hgroup h2, section section section nav hgroup h2, section section section section hgroup h2 {
+  margin-top: 0.533em;
+  margin-bottom: 0.693em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 0.6em;
+  line-height: 1.6;
+}
+
+/* ========================================================================== */
+/*      Page break                                                            */
+/* ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  page-break-after: avoid;
+}
+
+hgroup {
+  page-break-inside: avoid;
+}
+
+figure {
+  page-break-inside: avoid;
+}
+
+*[epub|type=pagebreak],
+*.pagebreak {
+  page-break-after: always;
+}
+
+/* ========================================================================== */
+/*      JBasic Vocaburaly                                                     */
+/* ========================================================================== */
+div.break-symbol {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+em.emphasis-mark, i.emphasis-mark, strong.emphasis-mark, span.emphasis-mark {
+  font-style: inherit;
+  font-weight: inherit;
+  -webkit-text-emphasis-style: filled dot;
+  -epub-text-emphasis-style: filled dot;
+  text-emphasis-style: filled dot;
+}
+
+span.tcy {
+  -webkit-text-combine: horizontal;
+  -epub-text-combine: horizontal;
+  text-combine: horizontal;
+}
+
+span.embox {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+span.embox img.ex-char {
+  width: 100%;
+  height: 100%;
+}
+
+.non-optical {
+  display: none;
+}
+
+.non-optical * {
+  -webkit-speak: normal;
+  -epub-speak: normal;
+  speak: normal;
+}
+
+/* ========================================================================== */
+/*      Component                                                             */
+/* ========================================================================== */
+/* ------------------------------
+ cover
+------------------------------ */
+*[epub|type=cover],
+*.cover {
+  margin: 0;
+  padding: 0;
+}
+
+*[epub|type=cover] figure,
+*.cover figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------
+ titlepage
+------------------------------ */
+section.titlepage {
+  font-family: "HiraMinProN-W3", "IPAexMincho", "MS Mincho", serif;
+  text-align: center;
+}
+
+section.titlepage h1.title {
+  margin-top: 0.4em;
+  margin-bottom: 1.6em;
+  font-weight: bold;
+  text-align: center;
+}
+
+section.titlepage h2.subtitle {
+  margin-top: 0.1em;
+  margin-bottom: 3.7em;
+  text-align: center;
+}
+
+/* ------------------------------
+ toc
+------------------------------ */
+nav[epub|type=toc] ol,
+nav.toc ol,
+nav[epub|type=landmarks] ol,
+nav.landmarks ol,
+nav[epub|type=pagelist] ol,
+nav.pagelist ol,
+nav[epub|type=toc] ol,
+nav.toc ol,
+nav[epub|type=lot] ol,
+nav.lot ol,
+nav[epub|type=loi] ol,
+nav.loi ol {
+  list-style: none;
+}
+
+nav.toc {
+  line-height: 1.6;
+}
+
+nav.toc > h1 {
+  margin-top: 0.4em;
+  margin-bottom: 1.6em;
+  text-align: center;
+}
+
+nav.toc > ol > li > span {
+  font-size: 1.2em;
+}
+
+nav.toc > ol > li > ol > li > span {
+  font-size: 1em;
+}
+
+nav.toc > ol > li > ol > li > ol > li > span {
+  font-size: 0.88em;
+}
+
+nav.toc > ol > li > ol > li > ol > li ol li > span {
+  font-size: 0.75em;
+}
+
+/* ------------------------------
+ colophon
+------------------------------ */
+section.colophon {
+  max-100%: 24em;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.88em;
+  line-height: 1.6;
+  text-align: center;
+}
+
+section.colophon dl {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section.colophon dl dl {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+
+section.colophon dd {
+  margin-left: 0;
+}
+
+section.colophon dd address {
+  text-align: center;
+}
+
+section.colophon small {
+  line-height: 1.25;
+}
+
+/* ------------------------------
+ notes
+------------------------------ */
+aside.footnotes,
+aside.rearnotes {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+aside marginalia,
+aside.footnotes *.footnote,
+aside.rearnotes *.rearnote {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  font-size: 0.88em;
+  line-height: 1.6;
+}
+
+aside marginalia h1,
+aside.footnotes *.footnote h1,
+aside.rearnotes *.rearnote h1 {
+  margin: 0;
+  padding: 0;
+  font-family: "HiraKakuProN-W3", "IPAexGothic", "MS Gothic", sans-serif;
+  font-weight: bold;
+}
+
+/* ========================================================================== */
+/*      Customize                                                             */
+/* ========================================================================== */body {
+    width: 50em;
+    margin: 0 auto;
+    padding: 2em;
+    font-family: Georgia, sans-serif;
+    font-size: 95%;
+}
+
+*:lang(en){
+    font-family: Georgia,serif;
+    font-weight: inherit;
+}
+
+h2:lang(en){
+    font-style: italic;
+}
+
+section h2:lang(en) {
+    padding-left: 0.25em;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid #000000;
+}
+
+p {
+    margin: 0.4em 0;
+}
+
+blockquote p {
+    font-family: Georgia, "HiraMinProN-W3", "IPAexMincho", "MS Mincho", serif;
+    font-style: normal;
+}
+
+.original-text {
+    margin-top: 1em;
+    border: 1px dashed #B9B9B9;
+    padding: 0.5em 1em;
+    font-size: 0.75em;
+    font-style: inherit;
+    background: #E9E9E9;
+    display: block;
+}
+
+a { 
+    font-family: Georgia,serif;
+    color: #004B91;
+}
+
+.wp_syntax {
+color: #100;
+background-color: #F9F9F9;
+border: 1px solid silver;
+margin: 0 0 1.5em 0;
+overflow: auto;
+}
+
+.wp_syntax pre {
+margin: 0;
+width: auto;
+float: none;
+clear: none;
+overflow: visible;
+font-size: 12px;
+line-height: 1.333;
+white-space: pre-wrap;
+}
+
+.wp_syntax div, .wp_syntax td {
+vertical-align: top;
+padding: 2px 4px;
+}
+
+table {
+    width: 100%;
+    margin: auto;
+}
+
+thead {
+    background: #cad9f0;
+}
+
+th {
+    font-weight: bold;
+}
+
+th, td {
+    width: 30%;
+    padding: 0.25em;
+}
+
+div.translators_note {
+    margin-top: 0.5em;
+    margin-bottom: 4em;
+    border: 1px solid #B6B09E;
+    border-left-width: 0;
+    border-right-width: 0;
+    padding: 0.75em;
+    font-size: 0.75em;
+    background: #FFFFEA;
+}
+
+div.translators_note p {
+    margin: 0;
+    padding: 0;
+}
+
+div.translators_note p:before {
+    content: "［訳注］ ";
+}
+
+dl.translation_info {
+    margin: 0;
+    padding: 0;
+}
+
+dl.translation_info dt {
+    display: run-in;
+    margin-right: 1em;
+}
+
+dl.translation_info dd {
+    margin-left: 1em;
+    margin-bottom: 0;
+}
+
+p.toggleLabel {
+    font-size: 0.75em;
+    text-align: right;
+    line-height: 1.2;
+}
+
+a.togglable {
+    color: gray;
+}
+
+code, tt {
+    font-family: Lucida Console', 'Courier New', monospace;
+}
