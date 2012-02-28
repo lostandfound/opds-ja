@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>取得リンクを理解しよう</title>
+        <link rel="stylesheet" href="../css/default.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.togglable.0.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('a.togglable').togglable({
+                    showAllLabel: '原文全非表示',
+                    hideAllLabel: '原文全非表示',
+                    showLabel: '原文表示',
+                    hideLabel: '原文非表示',
+                    onShow: function () {
+                    console.log(this);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h1>取得リンクを理解しよう</h1>
+                <h2 lang="en">Understanding Acquisition Links</h2>
+            </hgroup>
+            
+            <div class="translators_note" lang="ja">
+                <b>注意事項</b>
+                <ul>
+                    <li>この文書は、OPDSのドキュメンテーションの一つ <a href="http://opds-spec.org/2011/06/19/understanding-acquisition-links/">Understanding Acquisition Links</a> を @lost_and_found が個人的な関心のために翻訳したものです。</li>
+                    <li>この翻訳は公式なものではありません。翻訳上の誤りが含まれている可能性があります。</li>
+                    <!-- <li>この文書の公開URLは一時的なもので、近い将来変更を予定しています。ブックマークはお奨めしません。</li> -->
+                </ul>
+                
+                <dl class="translation_info">
+                    <dt>原文:</dt>
+                    <dd><a href="http://opds-spec.org/2011/06/19/understanding-acquisition-links/">Understanding Acquisition Links</a></dd>
+                    <dt>公開日:</dt>
+                    <dd>2012-1-25</dd>
+                    <dt>最終更新日:</dt>
+                    <dd>2012-1-25</dd>
+                    <dt>原文投稿日:</dt>
+                    <dd>2011-6-14</dd>
+                    <dt>原著者:</dt>
+                    <dd><a href="http://opds-spec.org/author/hadrien/">Hadrien Gardeur</a></dd>
+                    <dt>翻訳者:</dt>
+                    <dd>ろす(@lost_and_found)</dd>
+                </dl>
+            </div>
+        </header>
+        
+        <p class="toggleLabel"><a href="#" rel="showall" class="togglable">原文全表示</a></p>
+        
+        <p>OPDS はすべてリンクに関係している。ユーザがどこで閲覧し検索し出版物を取得すればよいのかが、リンクによって定義される。</p>
+        
+        <div id="en_p1" style="display:none;">
+            <p class="original-text" lang="en">OPDS is all about links: that's how we define where a user can browse, search and acquire publications.</p>
+        </div>
+        
+        <p class="toggleLabel"><a href="#en_p1" class="togglable">原文表示</a></p>
+        
+        <p>OPDSカタログの中で入手できるあらゆる出版物は、次の属性を伴った獲得リンクを少なくとも一つ持つ必要がある。</p>
+        
+        <div id="en_p2" style="display:none;">
+            <p class="original-text" lang="en">Every publication available in an OPDS catalog is required to have at least one acquisition link with:</p>
+        </div>
+        
+        <p class="toggleLabel"><a href="#en_p2" class="togglable">原文表示</a></p>
+        
+            <ul>
+                <li>
+                    <p>クライアントに推測可能な獲得方法を示す <code>rel</code> 属性</p>
+                    <div id="en_p3" style="display:none;">
+                        <p class="original-text" lang="en">a <code>rel</code> attribute, which indicates the type of acquisition that a client can expect</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p3" class="togglable">原文表示</a></p>
+                </li>
+                <li>
+                    <p>出版物のフォーマットを示す <code>type</code> 属性</p>
+                    <div id="en_p4" style="display:none;">
+                        <p class="original-text" lang="en">a <code>type</code> attribute, which indicates the format of the publication</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p4" class="togglable">原文表示</a></p>
+                </li>
+            </ul>
+        
+        <p><code>rel</code> 属性には次の値が利用できる。</p>
+        
+        <div id="en_p5" style="display:none;">
+        <p class="original-text" lang="en">The following <code>rel</code> values are available:</p>
+        </div>
+        
+        <p class="toggleLabel"><a href="#en_p5" class="togglable">原文表示</a></p>
+        
+            <ul>
+                <li>
+                    <p><a href="http://opds-spec.org/acquisition/open-access">http://opds-spec.org/acquisition/open-access</a> はオープンアクセスな出版物に用いる。</p>
+                    <div id="en_p6" style="display:none;">
+                        <p class="original-text" lang="en"><a href="http://opds-spec.org/acquisition/open-access">http://opds-spec.org/acquisition/open-access</a> for Open Access publications</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p6" class="togglable">原文表示</a></p>
+                </li>
+                <li>
+                    <p><a href="http://opds-spec.org/acquisition/buy">http://opds-spec.org/acquisition/buy</a> は購入できる出版物に用いる。</p>
+                    <div id="en_p7" style="display:none;">
+                        <p class="original-text" lang="en"><a href="http://opds-spec.org/acquisition/buy">http://opds-spec.org/acquisition/buy</a> for publications that you can buy</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p7" class="togglable">原文表示</a></p>
+                </li>
+                <li>
+                    <p><a href="http://opds-spec.org/acquisition/borrow">http://opds-spec.org/acquisition/borrow</a> は貸し出しできる出版物に用いる。</p>
+                    <div id="en_p8" style="display:none;">
+                        <p class="original-text" lang="en"><a href="http://opds-spec.org/acquisition/borrow">http://opds-spec.org/acquisition/borrow</a> for publications that you can borrow</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p8" class="togglable">原文表示</a></p>
+                </li>
+                <li>
+                    <p><a href="http://opds-spec.org/acquisition/subscribe">http://opds-spec.org/acquisition/subscribe</a> は購読できる出版物に用いる。</p>
+                    <div id="en_p9" style="display:none;">
+                        <p class="original-text" lang="en"><a href="http://opds-spec.org/acquisition/subscribe">http://opds-spec.org/acquisition/subscribe</a> for publications that you can subscribe to</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p9" class="togglable">原文表示</a></p>
+                </li>
+                <li>
+                    <p><a href="http://opds-spec.org/acquisition/sample">http://opds-spec.org/acquisition/sample</a> はサンプル用の出版物に用いる。</p>
+                    <div id="en_p10" style="display:none;">
+                        <p class="original-text" lang="en"><a href="http://opds-spec.org/acquisition/sample">http://opds-spec.org/acquisition/sample</a> to sample a publication</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p10" class="togglable">原文表示</a></p>
+                    </li>
+                <li>
+                    <p><a href="http://opds-spec.org/acquisition">http://opds-spec.org/acquisition</a> は他に適切な値がない場合や、付加する情報がない場合に用いる。</p>
+                    <div id="en_p11" style="display:none;">
+                        <p class="original-text" lang="en"><a href="http://opds-spec.org/acquisition">http://opds-spec.org/acquisition</a> when none of the other values are appropriate or you don't have additional information</p>
+                    </div>
+                    <p class="toggleLabel"><a href="#en_p11" class="togglable">原文表示</a></p>
+                </li>
+            </ul>
+        
+        <p>仕様書には次の例が載っている。</p>
+        
+        <div id="en_p12" style="display:none;">
+            <p class="original-text" lang="en">In the spec we offer the following example:</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p12" class="togglable">原文表示</a></p>
+        
+        <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/acquisition&quot;</span> </span>
+<span style="color: #009900;">      <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;video/mp4v-es&quot;</span> </span>
+<span style="color: #009900;">      <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/content/free/4561.mp4&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></pre></div></div>
+        
+        <p>同じ資料が複数のフォーマットで入手できる出版物なら、同じエントリの中に複数の獲得リンクを並べるだけでよい。</p>
+        <div id="en_p13" style="display:none;">
+            <p class="original-text" lang="en">If the same publication is available in multiple formats as unique resources, they would simply be listed using multiple acquisition links in the same entry:</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p13" class="togglable">原文表示</a></p>
+            
+        <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/acquisition/borrow&quot;</span> </span>
+<span style="color: #009900;">      <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/content/borrow/4561.mobi&quot;</span></span>
+<span style="color: #009900;">      <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/x-mobipocket-ebook&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+ 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/acquisition/borrow&quot;</span> </span>
+<span style="color: #009900;">      <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/content/borrow/4561.epub&quot;</span></span>
+<span style="color: #009900;">      <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/epub+zip&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></pre></div></div>
+            
+            <section>
+              <hgroup>
+                  <h1>Price 要素</h1>
+                  <h2 lang="en">Price element</h2>
+              </hgroup>
+        
+                <p>支払いが必要な出版物には、<code>opds:price</code> 要素が少なくとも一つ必要となり、内容には価格を <code>currencycode</code> 属性には通貨を指定する。</p>
+                <div id="en_p14" style="display:none;">
+                    <p class="original-text" lang="en">If the publication requires payment, at least one <code>opds:price</code> element is required, where the value is the price and the <code>currencycode</code> attribute indicates the currency:</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p14" class="togglable">原文表示</a></p>
+                
+                <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/acquisition/buy&quot;</span></span>
+<span style="color: #009900;">      <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/product/song1.mp3&quot;</span></span>
+<span style="color: #009900;">      <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;audio/mpeg&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:price</span> <span style="color: #000066;">currencycode</span>=<span style="color: #ff0000;">&quot;USD&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>1.99<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/opds:price<span style="color: #000000; font-weight: bold;">&gt;</span></span></span> 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/link<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+                
+                <p>price 要素は rel 属性の値が次の場合のみ利用できる。</p>
+            
+                <div id="en_p15" style="display:none;">
+                    <p class="original-text" lang="en">The price element can only be used with the following <code>rel</code> values:</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p15" class="togglable">原文表示</a></p>
+                
+            <ul>
+                <li><a href="http://opds-spec.org/acquisition/buy">http://opds-spec.org/acquisition/buy</a></li>
+                <li><a href="http://opds-spec.org/acquisition/subscription">http://opds-spec.org/acquisition/subscription</a></li>
+                <li><a href="http://opds-spec.org/acquisition/sample">http://opds-spec.org/acquisition/sample</a></li>
+            </ul>
+                
+            </section>
+            <section>
+                <hgroup>
+                    <h1>間接取得</h1>
+                    <h2 lang="en">Indirect Acquisition</h2>
+                </hgroup>
+                
+                <p>取得リンクが出版物を直接示さないケースがある。</p>
+                <div id="en_p16" style="display:none;">
+                    <p class="original-text" lang="en">In certain cases, the acquisition link doesn't point directly to the publication.</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p16" class="togglable">原文表示</a></p>
+                
+                <p>例えば、同じ出版物が複数のフォーマットで一つの zip ファイルの中に纏められているケースが挙げられる。</p>
+                
+                <div id="en_p17" style="display:none;">
+                    <p class="original-text" lang="en">This could be the case for example with a bundle, where a zip file is distributed with the same publication available in different formats inside.</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p17" class="togglable">原文表示</a></p>
+                
+                <p>この場合には、<code>type</code> 属性にメディアタイプを指定した <code>opds:indirectAcquisition</code> 要素が必要だ。</p>
+                
+                <div id="en_p18" style="display:none;">
+                    <p class="original-text" lang="en">In this case, an <code>opds:indirectAcquisition</code> element is required, where the <code>type</code> attribute is the media type:</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p18" class="togglable">原文表示</a></p>
+            
+            <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/zip&quot;</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/acquisition/open-access&quot;</span> <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/item/1111/buy/&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:indirectAcquisition</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/epub+zip&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:indirectAcquisition</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/pdf&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:indirectAcquisition</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/x-mobipocket-ebook&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/link<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+            
+                <p>DRM フォーマットもまたそうしたケースの一つで、EPUB や PDF に用いられる ACS4 ではクライアントは ACSM ファイルを通して最終的な出版物を取得することになる。</p>
+                
+                <div id="en_p19" style="display:none;">
+                    <p class="original-text" lang="en">This could also be the case of a DRM format, such as ACS4 for EPUB &#038; PDF, where the client acquires the final publication through an ACSM file:</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p19" class="togglable">原文表示</a></p>
+                
+                <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/vnd.adobe.adept+xml&quot;</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/acquisition/buy&quot;</span> <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/item/4141/buy&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:price</span> <span style="color: #000066;">currencycode</span>=<span style="color: #ff0000;">&quot;USD&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>4.29<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/opds:price<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:indirectAcquisition</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/epub+zip&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/link<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+            
+                <p>コンテナフォーマットの他に、間接取得はブラウザでのトランザクションを扱う上でも広く用いられている。このケースでは、<code>atom:link</code> 要素がウェブページを示す一方で <code>opds:indirectAcquisition</code> 要素はトランザクションの終了後にクライアントが取得することになるフォーマットを示している。</p>
+            
+                <div id="en_p20" style="display:none;">
+                    <p class="original-text" lang="en">Aside from container formats, indirect acquisition is also widely used to handle a transaction in the browser. In this case, the <code>atom:link</code> points to a webpage, while the <code>opds:indirectAcquisition</code> element indicates the format that the client can expect to acquire at the end of the transaction:</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p20" class="togglable">原文表示</a></p>
+                
+                <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text/html&quot;</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/acquisition/buy&quot;</span> <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/item/4141/buy&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:price</span> <span style="color: #000066;">currencycode</span>=<span style="color: #ff0000;">&quot;USD&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>4.29<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/opds:price<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:indirectAcquisition</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/vnd.adobe.adept+xml&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;opds:indirectAcquisition</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/epub+zip&quot;</span> <span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/opds:indirectAcquisition<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/link<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+            </section>
+        
+            <section>
+              <hgroup>
+                  <h1>出版物のフィルタリング</h1>
+                  <h2 lang="en">Filtering publications</h2>
+              </hgroup>
+                
+                <p>OPDS クライアントは取得リンクと <code>opds:indirectAcquisition</code> 要素に基づいて出版物をフィルタリングを行い、クライアントが出版物を開いたり、示されたワークフローに対処したり出来るか考慮した上で、出版物の一部または全部を非表示とすることができる。</p>
+                
+                <div id="en_p21" style="display:none;">
+                    <p class="original-text" lang="en">OPDS clients can filter publications based on these acquisition links and <code>opds:indirectAcquisition</code> elements and decide to display only a subset or even none of the publications if they consider that they can't open them or deal with the workflow described.</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p21" class="togglable">原文表示</a></p>
+            </section>
+    </body>
+</html>
