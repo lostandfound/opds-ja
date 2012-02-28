@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>OPDSカタログルートをよりよくする</title>
+        <link rel="stylesheet" href="../css/default.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.togglable.0.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('a.togglable').togglable({
+                    showAllLabel: '原文全非表示',
+                    hideAllLabel: '原文全非表示',
+                    showLabel: '原文表示',
+                    hideLabel: '原文非表示',
+                    onShow: function () {
+                    console.log(this);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h1>OPDSカタログルートをよりよくする</h1>
+                <h2 lang="en">Creating a better OPDS Catalog Root</h2>
+            </hgroup>
+            
+            <div class="translators_note" lang="ja">
+                <b>注意事項</b>
+                <ul>
+                    <li>この文書は、OPDSのドキュメンテーションの一つ <a href="http://opds-spec.org/2011/06/15/creating-a-better-opds-catalog-root/">Creating a better OPDS Catalog Root</a> を @lost_and_found が個人的な関心のために翻訳したものです。</li>
+                    <li>この翻訳は公式なものではありません。翻訳上の誤りが含まれている可能性があります。</li>
+                    <!-- <li>この文書の公開URLは一時的なもので、近い将来変更を予定しています。ブックマークはお奨めしません。</li> -->
+                </ul>
+                
+                <dl class="translation_info">
+                    <dt>原文:</dt>
+                    <dd><a href="http://opds-spec.org/2011/06/15/creating-a-better-opds-catalog-root/">Creating a better OPDS Catalog Root</a></dd>
+                    <dt>公開日:</dt>
+                    <dd>2012-1-25</dd>
+                    <dt>最終更新日:</dt>
+                    <dd>2012-1-25</dd>
+                    <dt>原文投稿日</dt>
+                    <dd>2011-6-15</dd>
+                    <dt>原著者:</dt>
+                    <dd><a class="url fn n" href="http://opds-spec.org/author/hadrien/">Hadrien Gardeur</a></dd>
+                    <dt>翻訳者:</dt>
+                    <dd>ろす(@lost_and_found)</dd>
+                </dl>
+            </div>
+        </header>
+        
+        <p class="toggleLabel"><a href="#" rel="showall" class="togglable">原文全表示</a></p>
+        
+        <p>タブレットの増加に伴い、OPDSのクライアントとカタログは7インチや10インチのスクリーンをカバーした見栄えのよい表示でカタログを提供する必要がでてきた。</p>
+        
+        <div id="en_p1" style="display:none;">
+            <p class="original-text" lang="en">With more and more tablets available, OPDS clients and catalogs need to evolve and provide a better looking presentation of their catalogs that can fill a 7" to 10" screen.</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p1" class="togglable">原文表示</a></p>
+        
+        <p>現在のスマートフォン上のOPDSクライアントは一連のリンク（ナビゲーションフィード）と出版物（獲得フィード）に完全に依拠している。</p>
+       
+        <div id="en_p2" style="display:none;">
+            <p class="original-text" lang="en">The current crop of OPDS clients on smartphones rely entirely on a navigation based on a series of links (Navigation Feeds) and publications  (Acquisition Feeds).</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p2" class="togglable">原文表示</a></p>
+        
+        <p>より大きなデバイスでは、OPDS仕様のフィードレベルリンクに従ったリンク関係を利用することで若干の創造性を発揮する余地があり、他のタブレットアプリケーションと同じようにリッチな体験を作り出すことが既に可能になっている。</p>
+        
+        <div id="en_p3" style="display:none;">
+            <p class="original-text" lang="en">On a larger device, there's room for a little more creativity though and using link relations from the OPDS specification along with feed-level links, it is already possible to create an experience as rich as any other tablet application.</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p3" class="togglable">原文表示</a></p>
+        
+        <p>例を見てみよう。これはAndroid 3.xのAndroid Marketアプリケーションだ。</p>
+        
+        <div id="en_p4" style="display:none;">
+            <p class="original-text" lang="en">Let's take an example: the Android Market application on Android 3.x.</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p4" class="togglable">原文表示</a></p>
+        
+        <figure>
+            <!-- <a href="http://opds-spec.org/files/2011/06/Xoommarket.png"><img class="size-medium wp-image-171 aligncenter" title="Android Market on Honeycomb" src="http://opds-spec.org/files/2011/06/Xoommarket-300x187.png" alt="" width="300" height="187"></a> -->
+            <p><a href="http://opds-spec.org/files/2011/06/Xoommarket-300x187.png">画像表示 小</a></p>
+            <p><a href="http://opds-spec.org/files/2011/06/Xoommarket.png">画像表示 大</a></p>
+        </figure>
+        
+        <section>
+            <hgroup>
+                <h1>カタログルート／ナビゲーションフィード</h1>
+                <h2 lang="en">Catalog Root / Navigation Feed</h2>
+            </hgroup>
+            
+            <p>ベーシックなOPDSカタログやスマートフォン用のOPDSクライアントではカテゴリのメニューだけを表示するだろう。</p>
+            
+            <div id="en_p5" style="display:none;">
+                <p class="original-text" lang="en">A basic OPDS catalog or an OPDS client for smartphones would only display the menu for categories:</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p5" class="togglable">原文表示</a></p>
+            
+            <figure>
+                <!-- <a href="http://opds-spec.org/files/2011/06/Navigation.png"><img class="size-medium wp-image-176 aligncenter" title="Navigation Feed / Catalog Root" src="http://opds-spec.org/files/2011/06/Navigation-244x300.png" alt="" width="244" height="300"></a> -->
+                <p><a href="http://opds-spec.org/files/2011/06/Navigation-244x300.png">画像表示 小</a></p>
+                <p><a href="http://opds-spec.org/files/2011/06/Navigation.png">画像表示 大</a></p>
+            </figure>
+            
+            <p>これは全く必要最小限のOPDSナビゲーションフィードの例だ。</p>
+            
+            <div id="en_p6" style="display:none;">
+                <p class="original-text" lang="en">This is the absolute minimum required of an OPDS Navigation Feed:</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p6" class="togglable">原文表示</a></p>
+            
+            <div class="wp_syntax">
+                <div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;?xml</span> <span style="color: #000066;">version</span>=<span style="color: #ff0000;">&quot;1.0&quot;</span> <span style="color: #000066;">encoding</span>=<span style="color: #ff0000;">&quot;UTF-8&quot;</span><span style="color: #000000; font-weight: bold;">?&gt;</span></span>
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;feed</span> <span style="color: #000066;">xmlns</span>=<span style="color: #ff0000;">&quot;http://www.w3.org/2005/Atom&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;id<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>urn:uuid:2853dacf-ed79-42f5-8e8a-a7bb3d1ae6a2<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/id<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;self&quot;</span></span>
+<span style="color: #009900;">        <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/opds-catalogs/root.xml&quot;</span></span>
+<span style="color: #009900;">        <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/atom+xml;profile=opds-catalog;kind=navigation&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;start&quot;</span></span>
+<span style="color: #009900;">        <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/opds-catalogs/root.xml&quot;</span></span>
+<span style="color: #009900;">        <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/atom+xml;profile=opds-catalog;kind=navigation&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>OPDS Catalog Root Example<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;updated<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>2010-01-10T10:03:10Z<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/updated<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;author<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;name<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>Spec Writer<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/name<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;uri<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>http://opds-spec.org<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/uri<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/author<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+ 
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;entry<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>Games<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;subsection&quot;</span></span>
+<span style="color: #009900;">          <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/opds-catalogs/games.xml&quot;</span></span>
+<span style="color: #009900;">          <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/atom+xml;profile=opds-catalog;kind=acquisition&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;updated<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>2010-01-10T10:01:01Z<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/updated<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;id<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>urn:uuid:d49e8018-a0e0-499e-9423-7c175fa0c56e<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/id<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;content</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>View all games.<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/content<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/entry<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;entry<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>Books and Reference<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/title<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;subsection&quot;</span></span>
+<span style="color: #009900;">          <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/opds-catalogs/books.xml&quot;</span></span>
+<span style="color: #009900;">          <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/atom+xml;profile=opds-catalog;kind=acquisition&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;updated<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>2010-01-10T10:02:00Z<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/updated<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;id<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>urn:uuid:d49e8018-a0e0-499e-9423-7c175fa0c56c<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/id<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+    <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;content</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span>View all books and reference applications.<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/content<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+  <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/entry<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>
+ 
+  [...]
+ 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/feed<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></pre></div></div>
+            
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>注目アイテム</h1>
+                <h2 lang="en">Featured items</h2>
+            </hgroup>         
+
+            <p>このAndroid Marketアプリケーションではスクリーンの多くのスペースを注目アプリに割いている。ホームページでは、カルーセルと "Featured apps" ブロックの二つの要素が注目アプリを表示している。</p>
+            
+            <div id="en_p7" style="display:none;">
+                <p class="original-text" lang="en">The Android Market application dedicates a lot of space on the screen to featured applications. On the homepage, two elements display featured applications: a carousel and a "Featured apps" block.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p7" class="togglable">原文表示</a></p>
+            
+            <figure>
+                <!--<a href="http://opds-spec.org/files/2011/06/Featured.png"><img class="size-medium wp-image-183 aligncenter" title="Featured" src="http://opds-spec.org/files/2011/06/Featured-300x119.png" alt="" width="300" height="119"></a> -->
+                <p><a href="http://opds-spec.org/files/2011/06/Featured-300x119.png">画像表示 小</a></p>
+                <p><a href="http://opds-spec.org/files/2011/06/Featured.png">画像表示 大</a></p>
+            </figure>
+
+            <p>さっきのセクションで示したものと全く同じナビゲーションフィードを使って、OPDSクライアントに必要な情報を追加し、フィーチャーする出版物をより魅力的に表示することはとても簡単だ。</p>
+            
+                <div id="en_p8" style="display:none;">
+                    <p class="original-text" lang="en">Using the exact same navigation feed that we provided in the previous section, it is very easy to add the kind of information required for an OPDS client to also display featured publications in a more attractive way.</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p8" class="togglable">原文表示</a></p>
+            
+            <p>OPDSの仕様ではこのような要素とのリレーションを表す値が定義されている。</p>
+            
+                <div id="en_p9" style="display:none;">
+                    <p class="original-text" lang="en">The OPDS specification defines a dedicated relationship value for such elements:<a href="http://opds-spec.org/featured"> http://opds-spec.org/featured</a></p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p9" class="togglable">原文表示</a></p>
+            
+            <p>この例を再現するために、カタログルートに二つのリンクを追加することができる。</p>
+            
+                <div id="en_p10" style="display:none;">
+                    <p class="original-text" lang="en">To reproduce this example we could add two links to our catalog root:</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p10" class="togglable">原文表示</a></p>
+            
+            <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/featured&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/opds-catalogs/featured_games.xml&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">title</span>=<span style="color: #ff0000;">&quot;Featured Games&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/atom+xml;profile=opds-catalog;kind=acquisition&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span>
+ 
+<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/featured&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/opds-catalogs/featured_apps.xml&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">title</span>=<span style="color: #ff0000;">&quot;Featured Apps&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/atom+xml;profile=opds-catalog;kind=acquisition&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></pre></div></div>
+            
+            <p>この構文によって、あらゆるOPDSクライアントは、このカタログが games と application のセレクションをフィーチャーしようとしていることがわかるようになるのだ。</p>
+            
+            <div id="en_p11" style="display:none;">
+                <p class="original-text" lang="en">With this syntax, any OPDS client can now be aware that the catalog would like to feature a selection of games and a selection of applications.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p11" class="togglable">原文表示</a></p>
+            
+            <p>スマートフォン用でさえ、この構文を既にサポートした OPDS 1.0互換クライアントが幾つかある。</p>
+            
+            <div id="en_p12" style="display:none;">
+                <p class="original-text" lang="en">Even on smartphones, some OPDS 1.0 compatible clients already support this syntax.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p12" class="togglable">原文表示</a></p>
+            
+            <p>例えば、<a href="http://www.aldiko.com">Aldiko</a> は他のナビゲーション要素の上にカルーセルを表示することができるし、<a href="http://www.bluefirereader.com">Bluefire Reader</a> にはこのようなアイテム専用のブロックがある。</p>
+            
+            <div id="en_p13" style="display:none;">
+                <p class="original-text" lang="en">For example, <a href="http://www.aldiko.com">Aldiko</a> can display a carousel on top of the other navigation elements, and <a href="http://www.bluefirereader.com">Bluefire Reader</a> has a block dedicated to such items.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p13" class="togglable">原文表示</a></p> 
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>人気アイテム</h1>
+                <h2 lang="en">Popular Items</h2>
+            </hgroup>
+
+            <p>同様にAndroid Marketでは、注目アイテムの下にある二番目のブロックに、人気アプリのセレクションも表示している。</p>
+            
+            <div id="en_p14" style="display:none;">
+                <p class="original-text" lang="en">In a similar way, the Android Market also displays a selection of popular apps in a second block under the featured items.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p14" class="togglable">原文表示</a></p>
+            
+            
+            <figure>
+                <!-- <a href="http://opds-spec.org/files/2011/06/Popular.png"><img class="size-medium wp-image-185 aligncenter" title="Popular" src="http://opds-spec.org/files/2011/06/Popular-300x51.png" alt="" width="300" height="51"></a> -->
+                <p><a href="http://opds-spec.org/files/2011/06/Popular-300x51.png">画像表示 小</a></p>
+                <p><a href="http://opds-spec.org/files/2011/06/Popular.png">画像表示 大</a></p>
+            </figure>
+            
+            <p>OPDSでは、人気アイテムのリレーションを <a href="http://opds-spec.org/sort/popular">http://opds-spec.org/sort/popular</a> で表すことができる。</p>
+            
+            <div id="en_p15" style="display:none;">
+                <p class="original-text" lang="en">In OPDS, we also have a relationship for popular items: <a href="http://opds-spec.org/sort/popular">http://opds-spec.org/sort/popular</a></p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p15" class="togglable">原文表示</a></p>
+            
+            <div class="wp_syntax"><div class="code"><pre class="xml" style="font-family:monospace;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;link</span> <span style="color: #000066;">rel</span>=<span style="color: #ff0000;">&quot;http://opds-spec.org/sort/popular&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">href</span>=<span style="color: #ff0000;">&quot;/opds-catalogs/top.xml&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">title</span>=<span style="color: #ff0000;">&quot;Top Free Apps&quot;</span></span>
+<span style="color: #009900;">  <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;application/atom+xml;profile=opds-catalog;kind=acquisition&quot;</span><span style="color: #000000; font-weight: bold;">/&gt;</span></span></pre></div></div>
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>他のrel属性値</h1>
+                <h2 lang="en">Other rel values</h2>
+            </hgroup>
+            
+            <p>注目アイテム（<a href="http://opds-spec.org/featured">http://opds-spec.org/featured</a>）や人気アイテム（<a href="http://opds-spec.org/sort/popular">http://opds-spec.org/sort/popular</a>）の他にも、OPDS仕様では新着アイテム（<a href="http://opds-spec.org/sort/new">http://opds-spec.org/sort/new</a>）、カスタマイズされた推薦アイテム（<a href="http://opds-spec.org/recommended">http://opds-spec.org/recommended</a>）、あなたの入手済みアイテム（<a href="http://opds-spec.org/shelf">http://opds-spec.org/shelf</a>）、あなたの購読アイテム（<a href="http://opds-spec.org/subscriptions">http://opds-spec.org/subscriptions</a>）というrel属性値が定義されている。</p>
+            
+            <div id="en_p16" style="display:none;">
+                <p class="original-text" lang="en">Aside from relationships for featured items (<a href="http://opds-spec.org/featured">http://opds-spec.org/featured</a>) and popular items (<a href="http://opds-spec.org/sort/popular">http://opds-spec.org/sort/popular</a>), the OPDS specification also defines rel values for new items (<a href="http://opds-spec.org/sort/new">http://opds-spec.org/sort/new</a>), customized recommendations (<a href="http://opds-spec.org/recommended">http://opds-spec.org/recommended</a>),  items that you've already acquired (<a href="http://opds-spec.org/shelf">http://opds-spec.org/shelf</a>) and your subscriptions (<a href="http://opds-spec.org/subscriptions">http://opds-spec.org/subscriptions</a>).</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p16" class="togglable">原文表示</a></p>
+            
+            <p>適切なリレーションを持つリンクを幾つか追加することで、クライアントが表示上の優れた体験を作り上げられるようにするのはとても簡単だ。このアプローチの一つの利点は小さなスクリーン上ではベーシックなものにフォールバックし、タブレット／ラップトップ／デスクトップ上では異なるカタログに頼ることなくその体験を拡張できることだ。</p>
+            
+            <div id="en_p17" style="display:none;">
+                <p class="original-text" lang="en">It is very easy for a catalog to add a few links with the proper relationships and enable clients to create a great looking experience. One benefit of this approach is the ability to fallback to something basic on smaller screens, and expand the experience on tablets/laptops/desktops without relying on a different catalog.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p17" class="togglable">原文表示</a></p>
+            
+            <p>クライアントはまた、これらの要素をどこに配置し、沢山のアイテムをどのように表示するのかなど、完全に思い通りにデザインすることができる。</p>
+            
+            <div id="en_p18" style="display:none;">
+                <p class="original-text" lang="en">Clients can also entirely design how they'd like to handle these elements: how to place them, how many items should be displayed etc.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p18" class="togglable">原文表示</a></p>
+        </section>
+    </body>
+</html>
