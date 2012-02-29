@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ファセット化検索と閲覧 (Faceted Search &amp; Browsing)</title>
+        <link rel="stylesheet" href="../css/default.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.togglable.0.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('a.togglable').togglable({
+                    showAllLabel: '原文全非表示',
+                    hideAllLabel: '原文全非表示',
+                    showLabel: '原文表示',
+                    hideLabel: '原文非表示',
+                    onShow: function () {
+                    console.log(this);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h1>ファセット化検索と閲覧</h1>
+                <h2 lang="en">Faceted Search &amp; Browsing</h2>
+            </hgroup>
+            
+            <div class="translators_note" lang="ja">
+                <b>注意事項</b>
+                <ul>
+                    <li>この文書は、OPDSのドキュメンテーションの一つ <a href="http://opds-spec.org/2011/06/14/faceted-search-browsing/">Faceted Search &amp; Browsing</a> を @lost_and_found が個人的な関心のために翻訳したものです。</li>
+                    <li>この翻訳は公式なものではありません。翻訳上の誤りが含まれている可能性があります。</li>
+                    <!-- <li>この文書の公開URLは一時的なもので、近い将来変更を予定しています。ブックマークはお奨めしません。</li> -->
+                </ul>
+                
+                <dl class="translation_info">
+                    <dt>原文:</dt>
+                    <dd><a href="http://opds-spec.org/2011/06/14/faceted-search-browsing/">Faceted Search &amp; Browsing</a></dd>
+                    <dt>公開日:</dt>
+                    <dd>2012-2-29</dd>
+                    <dt>最終更新日:</dt>
+                    <dd>2012-2-29</dd>
+                    <dt>原文投稿日:</dt>
+                    <dd>2011-6-14</dd>
+                    <dt>原著者:</dt>
+                    <dd><a href="http://opds-spec.org/author/hadrien/">Hadrien Gardeur</a></dd>
+                    <dt>翻訳者:</dt>
+                    <dd>ろす(@lost_and_found)</dd>
+                </dl>
+            </div>
+        </header>
+        
+        <p class="toggleLabel"><a href="#" rel="showall" class="togglable">原文全表示</a></p>
+        
+        <p><a href="http://opds-spec.org/specs/opds-catalog-1-1-20110627/">OPDS 1.1 仕様</a>では幾つかのキーとなる機構が導入されているが、ユーザの視点から見ればファセット化閲覧（faceted browsing）が OPDS 1.0との大きな違いだ。</p>
+        
+        <div id="en_p1" style="display:none;">
+            <p class="original-text" lang="en"><a href="http://opds-spec.org/specs/opds-catalog-1-1-20110627/">The OPDS 1.1 specification</a> introduces a few key features, but from a user perspective, faceted browsing is the major difference with OPDS 1.0.</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p1" class="togglable">原文表示</a></p>
+        
+        <p>ファセットは大量のアイテムを持つウェブサイトに我々をナビゲートする上で重要な役割を果たす。例えば、</p>
+        
+        <div id="en_p2" style="display:none;">
+            <p class="original-text" lang="en">Facets play a key role in how we navigate on websites with a large set of items to browse, for example:</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p2" class="togglable">原文表示</a></p>
+        
+        <ul>
+            <li>
+                <p><a href="http://googleblog.blogspot.com/2010/05/spring-metamorphosis-googles-new-look.html">Google Search navigation</a> は今ではほとんどがファセットを利用して設計されている
+                </p>
+                
+                <div id="en_p3" style="display:none;">
+                    <p class="original-text" lang="en"><a href="http://googleblog.blogspot.com/2010/05/spring-metamorphosis-googles-new-look.html">Google Search navigation</a> is now mostly designed using facets</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p3" class="togglable">原文表示</a></p>
+            </li>
+            
+            <li>
+                <p>大きなEコマースのウェブサイトは全てファセットを利用している</p>
+                
+                <div id="en_p4" style="display:none;">
+                    <p class="original-text" lang="en">All top ecommerce websites use facets</p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p4" class="togglable">原文表示</a></p>
+            </li>
+            <li>
+                <p><a href="http://archive.org">Internet Archive</a> や <a href="http://gallica.bnf.fr">Gallica</a> や <a href="http://www.loc.gov">Library of Congress</a> といった主要な図書館でも</p>
+                
+                <div id="en_p5" style="display:none;">
+                    <p class="original-text" lang="en">Major libraries like the <a href="http://archive.org">Internet Archive</a>, <a href="http://gallica.bnf.fr">Gallica</a> or the <a href="http://www.loc.gov">Library of Congress</a></p>
+                </div>
+                <p class="toggleLabel"><a href="#en_p5" class="togglable">原文表示</a></p>
+            </li>
+        </ul>
+
+        <p>OPDS 1.0 の（ウェブサイトのメインメニューと同じような働きをする）ナビゲーションがナビゲーションフィードを制限しているのに対して、OPDS 1.1 のあらゆるカタログとクライアントはファセットを利用してリッチなナビゲーションを提供できるようになっている。</p>
+        
+        <div id="en_p6" style="display:none;">
+            <p class="original-text" lang="en">While navigation in OPDS 1.0 is limited to a series of navigation feeds (which act like the equivalent of the main menu of a website), with OPDS 1.1 any catalog and client can now offer a much richer navigation model using facets.</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p6" class="togglable">原文表示</a></p>
+        
+        <p>我々がどのようにファセットをサポートしているのか見てみよう。</p>
+        
+        <div id="en_p7" style="display:none;">
+            <p class="original-text" lang="en">Let's see how we support this&#8230;</p>
+        </div>
+        <p class="toggleLabel"><a href="#en_p7" class="togglable">原文表示</a></p>
+        
+        <section>
+            <hgroup>
+                <h1>個々のファセットは link 要素</h1>
+                <h2 lang="en">Each facet is a link</h2>
+            </hgroup>
+       
+            <p>ファセットは獲得フィードの冒頭にある atom:link 要素として表現される。</p>
+       
+            <div id="en_p8" style="display:none;">
+                <p class="original-text" lang="en">Facets are represented as atom:link element at the top of an acquisition feed:</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p8" class="togglable">原文表示</a></p>
+       
+            <pre style="overflow: auto;">&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>"
+  href="/recent"
+  title="Most recent" /&gt;
+&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>" 
+  href="/popular"
+  title="Most popular" /&gt;</pre>
+            
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>新たな属性 &#8211; opds:activeFacet</h1>
+                <h2 lang="en">New attribute &#8211; opds:activeFacet</h2>
+            </hgroup>
+            
+            <p>ファセットはデフォルトで非アクティブと見做される。アクティブなファセットには link 要素に opds:activeFacet 属性を追加し、値に "true" を指定する。</p>
+            
+            <div id="en_p9" style="display:none;">
+                <p class="original-text" lang="en">By default, we consider that a facet is inactive. If a facet is active, an attribute opds:activeFacet is added to the link and set to "true".</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p9" class="togglable">原文表示</a></p>
+            
+            <pre style="overflow: auto;">&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>"
+  <span style="color: red;">opds:activeFacet="true"</span>
+  href="/recent"
+  title="Most recent" /&gt;
+&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>" 
+  href="/popular"
+  title="Most popular" /&gt;</pre>
+            
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>新たな属性 &#8211; opds:facetGroup</h1>
+                <h2 lang="en">New attribute &#8211; opds:facetGroup</h2>
+            </hgroup>
+            
+            <p>ファセットは opds:facetGroup 属性によってグループ化できる。グループの中で同時にアクティブになれるファセットは一つだけだ。</p>
+            
+            <div id="en_p10" style="display:none;">
+                <p class="original-text" lang="en">Facets can be grouped together using an opds:facetGroup attribute. In a group, only a single facet can be active at a time.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p10" class="togglable">原文表示</a></p>
+            
+            <pre style="overflow: auto;">&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>"
+  <span style="color: red;">opds:facetGroup="Order"</span> 
+  opds:activeFacet="true"
+  href="/recent"
+  title="Most recent" /&gt;
+&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>" 
+  <span style="color: red;">opds:facetGroup="Order"</span>
+  href="/popular"
+  title="Most popular" /&gt;</pre>
+            
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>エントリのカウント</h1>
+                <h2 lang="en">Counting entries</h2>
+            </hgroup>
+
+            <p>ファセットは Atom Threading extension の thr:count の要素を利用して予測されるエントリの数を表示することもできる。</p>
+            
+            <div id="en_p11" style="display:none;">
+                <p class="original-text" lang="en">A facet can also advertise the number of entries expected using an element from the Atom Threading extension: thr:count</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p11" class="togglable">原文表示</a></p>
+            
+            <pre style="overflow: auto;">&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>"
+  opds:facetGroup="Order" 
+  opds:activeFacet="true"
+  href="/recent"
+  title="Most recent" /&gt;
+&lt;link rel="<a href="http://opds-spec.org/facet" target="_blank">http://opds-spec.org/facet</a>" 
+  <span style="color: red;">thr:count="600"</span>
+  opds:facetGroup="Order"
+  href="/popular"
+  title="Most popular" /&gt;</pre>
+            
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>ファセットのための設計</h1>
+                <h2 lang="en">Designing for facets</h2>
+            </hgroup>
+            
+            <p>いわゆるアプリケーションストア（AppStore や Android Market）では、検索については極めて貧弱なことしかできないが、その問題の一つはファセット閲覧がないためだ。</p>
+            
+            <div id="en_p12" style="display:none;">
+                <p class="original-text" lang="en">The so-called application stores (AppStore &amp; Android Market), do a very poor job when it comes to discovery, and part of this problem is due to the lack of faceted browsing.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p12" class="togglable">原文表示</a></p>
+            
+            <p>ファセットはモバイルアプリケーションでは（スクリーン領域の制限や、モバイルアプリケーションの設計が未だに新しく専門知識を要するため）ウェブサイトほど浸透していないが、既に幾つかのデザインパターンがある。</p>
+            
+            <div id="en_p13" style="display:none;">
+                <p class="original-text" lang="en">While facets are not as common on mobile applications as they are on websites (due to the limited screen space or the fact that designing mobile applications is still a new area of expertise) , a few design patterns already exist.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p13" class="togglable">原文表示</a></p>
+            
+            <p>次の UXmatters の記事は、それらのパターンの素晴しい紹介になっている。 <a href="http://www.uxmatters.com/mt/archives/2010/04/design-patterns-for-mobile-faceted-search-part-i.php">http://www.uxmatters.com/mt/archives/2010/04/design-patterns-for-mobile-faceted-search-part-i.php</a></p>
+            
+            <div id="en_p14" style="display:none;">
+                <p class="original-text" lang="en">The following article at UXmatters is an excellent introduction to these patterns: <a href="http://www.uxmatters.com/mt/archives/2010/04/design-patterns-for-mobile-faceted-search-part-i.php">http://www.uxmatters.com/mt/archives/2010/04/design-patterns-for-mobile-faceted-search-part-i.php</a></p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p14" class="togglable">原文表示</a></p>
+            
+            <p>タブレットのような大きなデバイスには、iOS の split view (<a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/MobileHIG/UIElementGuidelines/UIElementGuidelines.html#//apple_ref/doc/uid/TP40006556-CH13-SW1">Official guidelines</a>) や Android の fragments (<a href="http://developer.android.com/guide/topics/fundamentals/fragments.html">Official documentation</a>) のような専用の UI 要素がファセットに完全にフィットする。</p>
+            
+            <div id="en_p15" style="display:none;">
+                <p class="original-text" lang="en">On larger devices such as tablets, specialized UI elements such as the iOS split view (<a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/MobileHIG/UIElementGuidelines/UIElementGuidelines.html#//apple_ref/doc/uid/TP40006556-CH13-SW1">Official guidelines</a>) or Android fragments (<a href="http://developer.android.com/guide/topics/fundamentals/fragments.html">Official documentation</a>) are a perfect fit for facets.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p15" class="togglable">原文表示</a></p>
+            
+            <p>デスクトップやウェブアプリケーションでは、ファセットの最も一般的なデザインは左側のパネルに表示することだが、上や右のパネルに表示することもある。</p>
+            
+            <div id="en_p16" style="display:none;">
+                <p class="original-text" lang="en">On desktop and in web apps, the most common design for facets is to display them in a left-hand panel, but some websites also put them on top or on the right.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p16" class="togglable">原文表示</a></p>
+            
+            <p>仕様や OPDS グループからの UI に関する公式の推奨項目はないが、ファセットを扱う最良の方法は、（ターゲットとするプラットフォームで）利用者が最も期待する箇所に表示することだ。</p>
+            
+            <div id="en_p17" style="display:none;">
+            <p class="original-text" lang="en">While there are no official recommendations in terms of UI from the spec or the OPDS group, the best way to treat facets is to display them where people would expect them the most (based on the platform you're targeting).</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p17" class="togglable">原文表示</a></p>
+            
+        </section>
+        
+        <section>
+            <hgroup>
+                <h1>実装</h1>
+                <h2 lang="en">Implementations</h2>
+            </hgroup>
+
+            <p><a href="http://www.feedbooks.com">Feedbooks</a> にはファセットを持つ動的なカタログがあり <a href="http://www.feedbooks.com/catalog">http://www.feedbooks.com/catalog</a> で利用できる。</p>   
+            
+            <div id="en_p18" style="display:none;">
+                <p class="original-text" lang="en"><a href="http://www.feedbooks.com">Feedbooks</a> has a live catalog with facets available at <a href="http://www.feedbooks.com/catalog">http://www.feedbooks.com/catalog</a></p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p18" class="togglable">原文表示</a></p>
+            
+            <p><a href="http://www.bluefirereader.com/">Bluefire Reader</a> はファセットをサポートした最初の OPDS クライアントだ（以下のスクリーンショットを参照）。</p>
+            
+            <div id="en_p19" style="display:none;">
+                <p class="original-text" lang="en"><a href="http://www.bluefirereader.com/">Bluefire Reader</a> is the first OPDS client to support this feature (see screenshots below).</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p19" class="togglable">原文表示</a></p>
+            
+            <p><a href="http://archive.org">The Internet Archive</a> と <a href="http://inkstonesoftware.com/">Inkstone Software</a> はどちらもファセット化検索と閲覧を最初にサポートしたサービスになるはずだ。</p>
+            
+            <div id="en_p20" style="display:none;">
+                <p class="original-text" lang="en"><a href="http://archive.org">The Internet Archive</a> and <a href="http://inkstonesoftware.com/">Inkstone Software</a> should also be among the first to support faceted search &amp; browsing.</p>
+            </div>
+            <p class="toggleLabel"><a href="#en_p20" class="togglable">原文表示</a></p>
+            
+            <figure>
+                <!-- <p style="text-align: center;"><a href="http://opds-spec.org/files/2011/06/Facets.png"><img class="alignnone size-medium wp-image-195" title="Faceted search with Bluefire Reader on iPad" src="http://opds-spec.org/files/2011/06/Facets-225x300.png" alt="Faceted search with Bluefire Reader on iPad" width="225" height="300" /></a><a href="http://opds-spec.org/files/2011/06/Facets2.png"><img class="alignnone size-medium wp-image-196" title="Selecting Facets with Bluefire Reader on the iPad" src="http://opds-spec.org/files/2011/06/Facets2-225x300.png" alt="Selecting Facets with Bluefire Reader on the iPad" width="225" height="300" /></a></p> -->
+                <p><a href="http://opds-spec.org/files/2011/06/Facets.png">画像表示: iPadでのBluefire Readerによるファセット化検索</a></p>
+                <p><a href="http://opds-spec.org/files/2011/06/Facets2.png">画像表示: iPadでのBluefire Readerによるファセットの選択</a></p>
+            </figure>
+            
+        </section>
+    </body>
+</html>
